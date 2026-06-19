@@ -30,15 +30,12 @@ import crowplexus.hscript.Expr.Error as IrisError;
 import crowplexus.hscript.Printer;
 #end
 
-<<<<<<< HEAD
 #if cpp
 @:headerCode('
 #include <iostream>
 #include <thread>
 ')
 #end
-=======
->>>>>>> mobile/main
 class LoadingState extends MusicBeatState
 {
 	public static var loaded:Int = 0;
@@ -249,11 +246,7 @@ class LoadingState extends MusicBeatState
 
 		if(!spawnedPessy)
 		{
-<<<<<<< HEAD
-			if(!transitioning && controls.ACCEPT)
-=======
 			if(!transitioning && (controls.ACCEPT || FlxG.touches.getFirst() != null && FlxG.touches.getFirst().justPressed))
->>>>>>> mobile/main
 			{
 				shakeMult = 1;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
@@ -419,11 +412,7 @@ class LoadingState extends MusicBeatState
 	{
 		#if MULTITHREADED_LOADING
 		// Due to the Main thread and Discord thread, we decrease it by 2.
-<<<<<<< HEAD
-		var threadCount:Int = Std.int(Math.max(1, getCPUThreadsCount() - #if DISCORD_ALLOWED 2 #else 1 #end));
-=======
 		var threadCount:Int = Std.int(Math.max(1, CoolUtil.getCPUThreadsCount() - #if DISCORD_ALLOWED 2 #else 1 #end));
->>>>>>> mobile/main
 		#else
 		var threadCount:Int = 1;
 		#end
@@ -635,11 +624,7 @@ class LoadingState extends MusicBeatState
 			{
 				for (subfolder in Mods.directoriesWithFile(Paths.getSharedPath(), '$prefix/$nam'))
 				{
-<<<<<<< HEAD
-					for (file in FileSystem.readDirectory(subfolder))
-=======
 					for (file in Paths.readDirectory(subfolder))
->>>>>>> mobile/main
 					{
 						if(file.endsWith(ext))
 						{
@@ -846,7 +831,6 @@ class LoadingState extends MusicBeatState
 
 		return null;
 	}
-<<<<<<< HEAD
 	
 	#if cpp
 	@:functionCode('
@@ -858,6 +842,4 @@ class LoadingState extends MusicBeatState
         	return -1;
     	}
     	#end
-=======
->>>>>>> mobile/main
 }

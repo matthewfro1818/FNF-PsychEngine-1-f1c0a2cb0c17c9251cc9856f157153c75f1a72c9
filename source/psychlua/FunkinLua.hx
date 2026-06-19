@@ -42,10 +42,7 @@ import flixel.input.keyboard.FlxKey;
 import flixel.input.gamepad.FlxGamepadInputID;
 
 import haxe.Json;
-<<<<<<< HEAD
-=======
 import mobile.psychlua.Functions;
->>>>>>> mobile/main
 
 class FunkinLua {
 	public var lua:State = null;
@@ -1570,11 +1567,8 @@ class FunkinLua {
 		CustomSubstate.implement(this);
 		ShaderFunctions.implement(this);
 		DeprecatedFunctions.implement(this);
-<<<<<<< HEAD
-=======
 		MobileFunctions.implement(this);
 		#if android AndroidFunctions.implement(this); #end
->>>>>>> mobile/main
 
 		for (name => func in customFunctions)
 		{
@@ -1593,13 +1587,10 @@ class FunkinLua {
 			var resultStr:String = Lua.tostring(lua, result);
 			if(resultStr != null && result != 0) {
 				trace(resultStr);
-<<<<<<< HEAD
 				#if windows
 				lime.app.Application.current.window.alert(resultStr, 'Error on lua script!');
-=======
 				#if (desktop || mobile)
 				CoolUtil.showPopUp(resultStr, 'Error on lua script!');
->>>>>>> mobile/main
 				#else
 				luaTrace('$scriptName\n$resultStr', true, false, FlxColor.RED);
 				#end

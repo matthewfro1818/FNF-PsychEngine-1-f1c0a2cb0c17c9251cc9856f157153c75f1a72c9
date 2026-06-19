@@ -59,8 +59,6 @@ class CustomSubstate extends MusicBeatSubstate
 		return false;
 	}
 
-<<<<<<< HEAD
-=======
 	public static function insertLuaTpad(?pos:Int = -1)
 	{
 		if(instance != null)
@@ -77,7 +75,6 @@ class CustomSubstate extends MusicBeatSubstate
 		return false;
 	}
 
->>>>>>> mobile/main
 	override function create()
 	{
 		instance = this;

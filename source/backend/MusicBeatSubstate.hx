@@ -4,17 +4,14 @@ import flixel.FlxSubState;
 
 class MusicBeatSubstate extends FlxSubState
 {
-<<<<<<< HEAD
 	public function new()
 	{
-=======
 	public static var instance:MusicBeatSubstate;
 
 	public function new()
 	{
 		instance = this;
 		controls.isInSubstate = true;
->>>>>>> mobile/main
 		super();
 	}
 
@@ -34,8 +31,6 @@ class MusicBeatSubstate extends FlxSubState
 	inline function get_controls():Controls
 		return Controls.instance;
 
-<<<<<<< HEAD
-=======
 	public var touchPad:TouchPad;
 	public var touchPadCam:FlxCamera;
 	public var mobileControls:IMobileControls;
@@ -124,7 +119,6 @@ class MusicBeatSubstate extends FlxSubState
 		super.destroy();
 	}
 
->>>>>>> mobile/main
 	override function update(elapsed:Float)
 	{
 		//everyStep();

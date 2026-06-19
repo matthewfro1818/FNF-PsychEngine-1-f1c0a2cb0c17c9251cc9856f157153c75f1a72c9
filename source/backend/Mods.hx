@@ -53,11 +53,8 @@ class Mods
 		#if MODS_ALLOWED
 		var modsFolder:String = Paths.mods();
 		if(FileSystem.exists(modsFolder)) {
-<<<<<<< HEAD
 			for (folder in FileSystem.readDirectory(modsFolder))
-=======
 			for (folder in Paths.readDirectory(modsFolder))
->>>>>>> mobile/main
 			{
 				var path = haxe.io.Path.join([modsFolder, folder]);
 				if (FileSystem.isDirectory(path) && !ignoreModFolders.contains(folder.toLowerCase()) && !list.contains(folder))
@@ -164,11 +161,8 @@ class Mods
 
 		#if MODS_ALLOWED
 		try {
-<<<<<<< HEAD
 			for (mod in CoolUtil.coolTextFile('modsList.txt'))
-=======
 			for (mod in CoolUtil.coolTextFile(#if android StorageUtil.getExternalStorageDirectory() + #else Sys.getCwd() + #end 'modsList.txt'))
->>>>>>> mobile/main
 			{
 				//trace('Mod: $mod');
 				if(mod.trim().length < 1) continue;
@@ -194,11 +188,8 @@ class Mods
 		var list:Array<Array<Dynamic>> = [];
 		var added:Array<String> = [];
 		try {
-<<<<<<< HEAD
 			for (mod in CoolUtil.coolTextFile('modsList.txt'))
-=======
 			for (mod in CoolUtil.coolTextFile(#if android StorageUtil.getExternalStorageDirectory() + #else Sys.getCwd() + #end 'modsList.txt'))
->>>>>>> mobile/main
 			{
 				var dat:Array<String> = mod.split("|");
 				var folder:String = dat[0];
@@ -232,11 +223,8 @@ class Mods
 			fileStr += values[0] + '|' + (values[1] ? '1' : '0');
 		}
 
-<<<<<<< HEAD
 		File.saveContent('modsList.txt', fileStr);
-=======
 		File.saveContent(#if android StorageUtil.getExternalStorageDirectory() + #else Sys.getCwd() + #end 'modsList.txt', fileStr);
->>>>>>> mobile/main
 		updatedOnState = true;
 		//trace('Saved modsList.txt');
 		#end
@@ -252,8 +240,5 @@ class Mods
 			Mods.currentModDirectory = list[0];
 		#end
 	}
-<<<<<<< HEAD
 }
-=======
 }
->>>>>>> mobile/main

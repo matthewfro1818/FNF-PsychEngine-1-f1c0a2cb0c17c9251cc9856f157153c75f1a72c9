@@ -134,15 +134,12 @@ class ModSettingsSubState extends BaseOptionsMenu
 		{
 			var errorTitle = 'Mod name: ' + folder;
 			var errorMsg = 'An error occurred: $e';
-<<<<<<< HEAD
 			#if windows
 			lime.app.Application.current.window.alert(errorMsg, errorTitle);
 			#end
 			trace('$errorTitle - $errorMsg');
 
-=======
 			CoolUtil.showPopUp(errorMsg, errorTitle);
->>>>>>> mobile/main
 			_crashed = true;
 			close();
 			return;
@@ -192,8 +189,4 @@ class ModSettingsSubState extends BaseOptionsMenu
 		FlxG.save.flush();
 		super.close();
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> mobile/main

@@ -253,7 +253,6 @@ class Main extends Sprite
 		}
 	}
 
-<<<<<<< HEAD
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
 	// very cool person for real they don't get enough credit for their work
 	#if CRASH_HANDLER
@@ -303,10 +302,8 @@ class Main extends Sprite
 		Sys.exit(1);
 	}
 	#end
-=======
 	function toggleFullScreen(event:KeyboardEvent) {
 		if (Controls.instance.justReleased('fullscreen'))
 			FlxG.fullscreen = !FlxG.fullscreen;
 	}
->>>>>>> mobile/main
 }

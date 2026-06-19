@@ -72,8 +72,4 @@ class FlxAnimateFunctions
 		});
 	}
 }
-<<<<<<< HEAD
 #end
-=======
-#end
->>>>>>> mobile/main

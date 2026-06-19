@@ -16,12 +16,9 @@ typedef EventNote = {
 	strumTime:Float,
 	event:String,
 	value1:String,
-<<<<<<< HEAD
 	value2:String,
 	?params:Array<Dynamic>
-=======
 	value2:String
->>>>>>> mobile/main
 }
 
 typedef NoteSplashData = {
@@ -58,10 +55,7 @@ class Note extends FlxSprite
 
 	public var strumTime:Float = 0;
 	public var noteData:Int = 0;
-<<<<<<< HEAD
 	public var maniaKeyCount:Int = 4;
-=======
->>>>>>> mobile/main
 
 	public var mustPress:Bool = false;
 	public var canBeHit:Bool = false;
@@ -105,10 +99,7 @@ class Note extends FlxSprite
 	public static var SUSTAIN_SIZE:Int = 44;
 	public static var swagWidth:Float = 160 * 0.7;
 	public static var colArray:Array<String> = ['purple', 'blue', 'green', 'red'];
-<<<<<<< HEAD
 	public static var threeDColArray:Array<String> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'alt A'];
-=======
->>>>>>> mobile/main
 	public static var defaultNoteSkin(default, never):String = 'noteSkins/NOTE_assets';
 
 	public var noteSplashData:NoteSplashData = {
@@ -141,10 +132,7 @@ class Note extends FlxSprite
 	public var ratingDisabled:Bool = false;
 
 	public var texture(default, set):String = null;
-<<<<<<< HEAD
 	public var loadedTexture(default, null):String = null;
-=======
->>>>>>> mobile/main
 
 	public var noAnimation:Bool = false;
 	public var noMissAnimation:Bool = false;
@@ -190,7 +178,6 @@ class Note extends FlxSprite
 
 	public function defaultRGB()
 	{
-<<<<<<< HEAD
 		if(is3DNoteTexture(loadedTexture) || (PlayState.SONG != null && is3DNoteTexture(PlayState.SONG.arrowSkin)))
 		{
 			rgbShader.enabled = false;
@@ -198,8 +185,6 @@ class Note extends FlxSprite
 			return;
 		}
 
-=======
->>>>>>> mobile/main
 		var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[noteData];
 		if(PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[noteData];
 
@@ -260,11 +245,8 @@ class Note extends FlxSprite
 		return value;
 	}
 
-<<<<<<< HEAD
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false, ?createdFrom:Dynamic = null, ?keyCount:Int = 4)
-=======
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false, ?createdFrom:Dynamic = null)
->>>>>>> mobile/main
 	{
 		super();
 
@@ -288,10 +270,7 @@ class Note extends FlxSprite
 		if(!inEditor) this.strumTime += ClientPrefs.data.noteOffset;
 
 		this.noteData = noteData;
-<<<<<<< HEAD
 		this.maniaKeyCount = keyCount;
-=======
->>>>>>> mobile/main
 
 		if(noteData > -1)
 		{
@@ -300,7 +279,6 @@ class Note extends FlxSprite
 			texture = '';
 
 			x += swagWidth * (noteData);
-<<<<<<< HEAD
 			var noteProfile:Array<String> = getProfileForTexture(loadedTexture, maniaKeyCount);
 			if(!isSustainNote && noteData < noteProfile.length) { //Doing this 'if' check to fix the warnings on Senpai songs
 				var animToPlay:String = '';
@@ -308,12 +286,10 @@ class Note extends FlxSprite
 				var scrollAnim:String = animToPlay + 'Scroll';
 				if(animation.exists(scrollAnim))
 					animation.play(scrollAnim);
-=======
 			if(!isSustainNote && noteData < colArray.length) { //Doing this 'if' check to fix the warnings on Senpai songs
 				var animToPlay:String = '';
 				animToPlay = colArray[noteData % colArray.length];
 				animation.play(animToPlay + 'Scroll');
->>>>>>> mobile/main
 			}
 		}
 
@@ -324,27 +300,21 @@ class Note extends FlxSprite
 
 		if (isSustainNote && prevNote != null)
 		{
-<<<<<<< HEAD
 			alpha = 1;
 			multAlpha = 1;
-=======
 			alpha = 0.6;
 			multAlpha = 0.6;
->>>>>>> mobile/main
 			hitsoundDisabled = true;
 			if(ClientPrefs.data.downScroll) flipY = true;
 
 			offsetX += width / 2;
 			copyAngle = false;
 
-<<<<<<< HEAD
 			var sustainProfile:Array<String> = getProfileForTexture(loadedTexture, maniaKeyCount);
 			var tailAnim:String = sustainProfile[noteData % sustainProfile.length] + 'tail';
 			if(animation.exists(tailAnim))
 				animation.play(tailAnim);
-=======
 			animation.play(colArray[noteData % colArray.length] + 'holdend');
->>>>>>> mobile/main
 
 			updateHitbox();
 
@@ -355,14 +325,11 @@ class Note extends FlxSprite
 
 			if (prevNote.isSustainNote)
 			{
-<<<<<<< HEAD
 				var prevProfile:Array<String> = getProfileForTexture(prevNote.loadedTexture, prevNote.maniaKeyCount);
 				var holdAnim:String = prevProfile[prevNote.noteData % prevProfile.length] + 'hold';
 				if(prevNote.animation.exists(holdAnim))
 					prevNote.animation.play(holdAnim);
-=======
 				prevNote.animation.play(colArray[prevNote.noteData % colArray.length] + 'hold');
->>>>>>> mobile/main
 
 				prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.05;
 				if(createdFrom != null && createdFrom.songSpeed != null) prevNote.scale.y *= createdFrom.songSpeed;
@@ -395,11 +362,7 @@ class Note extends FlxSprite
 		if(globalRgbShaders[noteData] == null)
 		{
 			var newRGB:RGBPalette = new RGBPalette();
-<<<<<<< HEAD
 			var arr:Array<FlxColor> = (!PlayState.isPixelStage) ? ClientPrefs.data.arrowRGB[noteData % ClientPrefs.data.arrowRGB.length] : ClientPrefs.data.arrowRGBPixel[noteData % ClientPrefs.data.arrowRGBPixel.length];
-=======
-			var arr:Array<FlxColor> = (!PlayState.isPixelStage) ? ClientPrefs.data.arrowRGB[noteData] : ClientPrefs.data.arrowRGBPixel[noteData];
->>>>>>> mobile/main
 			
 			if (arr != null && noteData > -1 && noteData <= arr.length)
 			{
@@ -452,15 +415,12 @@ class Note extends FlxSprite
 			_lastValidChecked = customSkin;
 		}
 		else skinPostfix = '';
-<<<<<<< HEAD
 		loadedTexture = skin;
 		if(is3DNoteTexture(loadedTexture))
 		{
 			rgbShader.enabled = false;
 			noteSplashData.useRGBShader = false;
 		}
-=======
->>>>>>> mobile/main
 
 		if(PlayState.isPixelStage) {
 			if(isSustainNote) {
@@ -483,11 +443,8 @@ class Note extends FlxSprite
 		} else {
 			frames = Paths.getSparrowAtlas(skin);
 			loadNoteAnims();
-<<<<<<< HEAD
 			if(is3DNoteTexture(loadedTexture))
 				antialiasing = false;
-=======
->>>>>>> mobile/main
 			if(!isSustainNote)
 			{
 				centerOffsets();
@@ -497,19 +454,16 @@ class Note extends FlxSprite
 
 		if(isSustainNote) {
 			scale.y = lastScaleY;
-<<<<<<< HEAD
 			pixelPerfectRender = true;
 			antialiasing = false;
 		}
 		updateHitbox();
 
 		if(animName != null && animation.exists(animName))
-=======
 		}
 		updateHitbox();
 
 		if(animName != null)
->>>>>>> mobile/main
 			animation.play(animName, true);
 	}
 
@@ -522,18 +476,14 @@ class Note extends FlxSprite
 	}
 
 	function loadNoteAnims() {
-<<<<<<< HEAD
 		var profile:Array<String> = getProfileForTexture(loadedTexture, maniaKeyCount);
 		if (profile[noteData] == null)
-=======
 		if (colArray[noteData] == null)
->>>>>>> mobile/main
 			return;
 
 		if (isSustainNote)
 		{
 			attemptToAddAnimationByPrefix('purpleholdend', 'pruple end hold', 24, true); // this fixes some retarded typo from the original note .FLA
-<<<<<<< HEAD
 			var usesLetterAtlas:Bool = isLetterProfile(profile[noteData]);
 			if (usesLetterAtlas) {
 				if(!addFirstMatchingAnimation(profile[noteData] + 'tail', [
@@ -684,7 +634,6 @@ class Note extends FlxSprite
 		}
 	}
 
-=======
 			animation.addByPrefix(colArray[noteData] + 'holdend', colArray[noteData] + ' hold end', 24, true);
 			animation.addByPrefix(colArray[noteData] + 'hold', colArray[noteData] + ' hold piece', 24, true);
 		}
@@ -694,23 +643,18 @@ class Note extends FlxSprite
 		updateHitbox();
 	}
 
->>>>>>> mobile/main
 	function loadPixelNoteAnims() {
 		if (colArray[noteData] == null)
 			return;
 
 		if(isSustainNote)
 		{
-<<<<<<< HEAD
 			animation.add(colArray[noteData] + 'tail', [noteData + 4], 24, true);
-=======
 			animation.add(colArray[noteData] + 'holdend', [noteData + 4], 24, true);
->>>>>>> mobile/main
 			animation.add(colArray[noteData] + 'hold', [noteData], 24, true);
 		} else animation.add(colArray[noteData] + 'Scroll', [noteData + 4], 24, true);
 	}
 
-<<<<<<< HEAD
 	function addFirstMatchingAnimation(name:String, prefixes:Array<String>, framerate:Float = 24, doLoop:Bool = true):Bool
 	{
 		for(prefix in prefixes)
@@ -720,23 +664,18 @@ class Note extends FlxSprite
 	}
 
 	function attemptToAddAnimationByPrefix(name:String, prefix:String, framerate:Float = 24, doLoop:Bool = true):Bool
-=======
 	function attemptToAddAnimationByPrefix(name:String, prefix:String, framerate:Float = 24, doLoop:Bool = true)
->>>>>>> mobile/main
 	{
 		var animFrames = [];
 		@:privateAccess
 		animation.findByPrefix(animFrames, prefix); // adds valid frames to animFrames
-<<<<<<< HEAD
 		if(animFrames.length < 1) return false;
 
 		animation.addByPrefix(name, prefix, framerate, doLoop);
 		return true;
-=======
 		if(animFrames.length < 1) return;
 
 		animation.addByPrefix(name, prefix, framerate, doLoop);
->>>>>>> mobile/main
 	}
 
 	override function update(elapsed:Float)
@@ -807,14 +746,11 @@ class Note extends FlxSprite
 				}
 				y -= (frameHeight * scale.y) - (Note.swagWidth / 2);
 			}
-<<<<<<< HEAD
 
 			// Sustain bodies are stacked from separate sprites. Keeping their render position
 			// on whole pixels prevents the thin seams caused by fractional overlap at segment joins.
 			if(isSustainNote)
 				y = Math.round(y);
-=======
->>>>>>> mobile/main
 		}
 	}
 

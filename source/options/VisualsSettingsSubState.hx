@@ -121,18 +121,14 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		option.decimals = 1;
 		addOption(option);
 		
-<<<<<<< HEAD
 		#if !mobile
-=======
->>>>>>> mobile/main
 		var option:Option = new Option('FPS Counter',
 			'If unchecked, hides FPS Counter.',
 			'showFPS',
 			BOOL);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
-<<<<<<< HEAD
-=======
+		#end
 
 		#if native
 		var option:Option = new Option('VSync',
@@ -141,7 +137,6 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 			BOOL);
 		option.onChange = onChangeVSync;
 		addOption(option);
->>>>>>> mobile/main
 		#end
 		
 		var option:Option = new Option('Pause Music:',
@@ -301,21 +296,16 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		super.destroy();
 	}
 
-<<<<<<< HEAD
 	#if !mobile
-=======
->>>>>>> mobile/main
 	function onChangeFPSCounter()
 	{
 		if(Main.fpsVar != null)
 			Main.fpsVar.visible = ClientPrefs.data.showFPS;
 	}
-<<<<<<< HEAD
-=======
+	#end
 
 	#if native
 	function onChangeVSync()
 		lime.app.Application.current.window.vsync = ClientPrefs.data.vsync;
->>>>>>> mobile/main
 	#end
 }

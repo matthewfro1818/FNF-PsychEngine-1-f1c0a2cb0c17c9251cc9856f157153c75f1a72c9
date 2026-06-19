@@ -29,10 +29,7 @@ typedef NoteSplashConfig = {
 
 class NoteSplash extends FlxSprite
 {
-<<<<<<< HEAD
 	static var splashCols:Array<String> = ['purple', 'blue', 'green', 'red'];
-=======
->>>>>>> mobile/main
 	public var rgbShader:PixelSplashShaderRef;
 	public var texture:String;
 	public var config(default, set):NoteSplashConfig;
@@ -165,11 +162,8 @@ class NoteSplash extends FlxSprite
 		var failedToFind:Bool = false;
 		while (true)
 		{
-<<<<<<< HEAD
 			for (v in splashCols)
-=======
 			for (v in Note.colArray)
->>>>>>> mobile/main
 			{
 				if (!checkForAnim('$anim $v ${maxAnims+1}'))
 				{
@@ -183,15 +177,12 @@ class NoteSplash extends FlxSprite
 
 		for (animNum in 0...maxAnims)
 		{
-<<<<<<< HEAD
 			for (i => col in splashCols)
 			{
 				var data:Int = i % splashCols.length + (animNum * splashCols.length);
-=======
 			for (i => col in Note.colArray)
 			{
 				var data:Int = i % Note.colArray.length + (animNum * Note.colArray.length);
->>>>>>> mobile/main
 				var name:String = animNum > 0 ? '$col' + (animNum + 1) : col;
 				var offset:Array<Float> = offsets[FlxMath.wrap(data, 0, Std.int(offsets.length-1))];
 				addAnimationToConfig(tempConfig, 1, name, '$anim $col ${animNum + 1}', fps, offset, [], data);
@@ -224,17 +215,14 @@ class NoteSplash extends FlxSprite
 			setPosition(babyArrow.x - Note.swagWidth * 0.95, babyArrow.y - Note.swagWidth); // To prevent it from being misplaced for one game tick
 
 		if (note != null)
-<<<<<<< HEAD
 			noteData = Note.getLaneColorIndex(note.loadedTexture, note.maniaKeyCount, note.noteData);
 
 		if (randomize && maxAnims > 1)
 			noteData = noteData % splashCols.length + (FlxG.random.int(0, maxAnims - 1) * splashCols.length);
-=======
 			noteData = note.noteData;
 
 		if (randomize && maxAnims > 1)
 			noteData = noteData % Note.colArray.length + (FlxG.random.int(0, maxAnims - 1) * Note.colArray.length);
->>>>>>> mobile/main
 
 		this.noteData = noteData;
 		var anim:String = playDefaultAnim();
@@ -242,11 +230,8 @@ class NoteSplash extends FlxSprite
 		var tempShader:RGBPalette = null;
 		if (config.allowRGB)
 		{
-<<<<<<< HEAD
 			Note.initializeGlobalRGBShader(noteData % splashCols.length);
-=======
 			Note.initializeGlobalRGBShader(noteData % Note.colArray.length);
->>>>>>> mobile/main
 			if (inEditor || (note == null || note.noteSplashData.useRGBShader) && (PlayState.SONG == null || !PlayState.SONG.disableNoteRGB))
 			{
 				tempShader = new RGBPalette();
@@ -260,13 +245,10 @@ class NoteSplash extends FlxSprite
 						{
 							if (i > 2) break;
 
-<<<<<<< HEAD
 							var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[noteData % splashCols.length];
 							if (PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[noteData % splashCols.length];
-=======
 							var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[noteData % Note.colArray.length];
 							if (PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[noteData % Note.colArray.length];
->>>>>>> mobile/main
 
 							var rgb = colors[i];
 							if (rgb == null)
@@ -291,11 +273,8 @@ class NoteSplash extends FlxSprite
 							else if (i == 2) tempShader.b = color;
 						}
 					}
-<<<<<<< HEAD
 					else tempShader.copyValues(Note.globalRgbShaders[noteData % splashCols.length]);
-=======
 					else tempShader.copyValues(Note.globalRgbShaders[noteData % Note.colArray.length]);
->>>>>>> mobile/main
 
 					if (note != null)
 					{
@@ -304,11 +283,8 @@ class NoteSplash extends FlxSprite
 						if (note.noteSplashData.b != -1) tempShader.b = note.noteSplashData.b;
 					}
 				}
-<<<<<<< HEAD
 				else tempShader.copyValues(Note.globalRgbShaders[noteData % splashCols.length]);
-=======
 				else tempShader.copyValues(Note.globalRgbShaders[noteData % Note.colArray.length]);
->>>>>>> mobile/main
 			}
 		}
 		rgbShader.copyValues(tempShader);
@@ -454,11 +430,8 @@ class NoteSplash extends FlxSprite
 	function set_maxAnims(value:Int)
 	{
 		if (value > 0)
-<<<<<<< HEAD
 			noteData = Std.int(FlxMath.wrap(noteData, 0, (value * splashCols.length) - 1));
-=======
 			noteData = Std.int(FlxMath.wrap(noteData, 0, (value * Note.colArray.length) - 1));
->>>>>>> mobile/main
 		else
 			noteData = 0;
 

@@ -85,8 +85,6 @@ class CoolUtil
 		return Math.floor(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
 	}
 
-<<<<<<< HEAD
-=======
 	#if linux
 	public static function sortAlphabetically(list:Array<String>):Array<String> {
 		if (list == null) return [];
@@ -101,7 +99,6 @@ class CoolUtil
 	}
 	#end
 
->>>>>>> mobile/main
 	inline public static function dominantColor(sprite:flixel.FlxSprite):Int
 	{
 		var countByColor:Map<Int, Int> = [];
@@ -200,8 +197,6 @@ class CoolUtil
 				text.borderStyle = NONE;
 		}
 	}
-<<<<<<< HEAD
-=======
 
 	public static function showPopUp(message:String, title:String):Void
 	{
@@ -221,5 +216,4 @@ class CoolUtil
     {
         return 1;
     }
->>>>>>> mobile/main
 }

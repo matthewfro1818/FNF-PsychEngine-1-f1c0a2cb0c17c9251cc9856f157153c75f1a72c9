@@ -110,8 +110,6 @@ class PsychUIDropDownMenu extends PsychUIInputText
 			var wheel:Int = FlxG.mouse.wheel;
 			if(FlxG.keys.justPressed.UP) wheel++;
 			if(FlxG.keys.justPressed.DOWN) wheel--;
-<<<<<<< HEAD
-=======
 			/*#if FLX_TOUCH
 			for (touch in FlxG.touches.list)
 			{
@@ -151,7 +149,6 @@ class PsychUIDropDownMenu extends PsychUIInputText
 					moveY = addition = curY = prevY = 0;
 			}
 			#end*/
->>>>>>> mobile/main
 			if(wheel != 0) showDropDown(true, curScroll - wheel, _curFilter);
 		}
 	}
@@ -320,8 +317,4 @@ class PsychUIDropDownItem extends FlxSpriteGroup
 		bg.updateHitbox();
 		return v;
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> mobile/main

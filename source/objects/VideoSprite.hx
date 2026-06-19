@@ -167,8 +167,4 @@ class VideoSprite extends FlxSpriteGroup {
 	public function resume() videoSprite?.resume();
 	public function pause() videoSprite?.pause();
 	#end
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> mobile/main

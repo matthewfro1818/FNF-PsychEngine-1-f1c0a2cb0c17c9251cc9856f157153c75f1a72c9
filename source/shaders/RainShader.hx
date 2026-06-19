@@ -1,9 +1,6 @@
 package shaders;
 
-<<<<<<< HEAD
 import flixel.system.FlxAssets.FlxShader;
-=======
->>>>>>> mobile/main
 import openfl.display.BitmapData;
 import openfl.display.ShaderParameter;
 import openfl.display.ShaderParameterType;
@@ -511,8 +508,5 @@ class RainShader extends FlxShader
 		__paramFloat.push(res);
 		return res;
 	}
-<<<<<<< HEAD
 }
-=======
 }
->>>>>>> mobile/main

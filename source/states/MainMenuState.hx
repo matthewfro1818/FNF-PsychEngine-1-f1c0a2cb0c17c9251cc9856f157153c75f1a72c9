@@ -124,11 +124,8 @@ class MainMenuState extends MusicBeatState
 		#end
 
 		FlxG.camera.follow(camFollow, null, 0.15);
-<<<<<<< HEAD
-=======
 
 		addTouchPad('NONE', 'E');
->>>>>>> mobile/main
 	}
 
 	function createMenuItem(name:String, x:Float, y:Float):FlxSprite
@@ -268,11 +265,7 @@ class MainMenuState extends MusicBeatState
 				MusicBeatState.switchState(new TitleState());
 			}
 
-<<<<<<< HEAD
-			if (controls.ACCEPT || (FlxG.mouse.justPressed && allowMouse))
-=======
 			if (controls.ACCEPT || (FlxG.mouse.overlaps(menuItems, FlxG.camera) && FlxG.mouse.justPressed && allowMouse))
->>>>>>> mobile/main
 			{
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 				selectedSomethin = true;
@@ -347,21 +340,15 @@ class MainMenuState extends MusicBeatState
 					FlxTween.tween(memb, {alpha: 0}, 0.4, {ease: FlxEase.quadOut});
 				}
 			}
-<<<<<<< HEAD
 			#if desktop
 			if (controls.justPressed('debug_1'))
-=======
 			else if (controls.justPressed('debug_1') || touchPad.buttonE.justPressed)
->>>>>>> mobile/main
 			{
 				selectedSomethin = true;
 				FlxG.mouse.visible = false;
 				MusicBeatState.switchState(new MasterEditorMenu());
 			}
-<<<<<<< HEAD
 			#end
-=======
->>>>>>> mobile/main
 		}
 
 		super.update(elapsed);

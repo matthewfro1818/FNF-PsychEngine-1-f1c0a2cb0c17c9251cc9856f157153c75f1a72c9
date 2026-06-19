@@ -1,16 +1,12 @@
 package objects;
 
-<<<<<<< HEAD
 import shaders.ColorSwap;
 
-=======
->>>>>>> mobile/main
 class HealthIcon extends FlxSprite
 {
 	public var sprTracker:FlxSprite;
 	private var isPlayer:Bool = false;
 	private var char:String = '';
-<<<<<<< HEAD
 	public var paletteKey:String = null;
 	public var colorSwap:ColorSwap;
 
@@ -20,13 +16,11 @@ class HealthIcon extends FlxSprite
 		this.isPlayer = isPlayer;
 		this.paletteKey = paletteKey != null ? paletteKey : char;
 		colorSwap = new ColorSwap();
-=======
 
 	public function new(char:String = 'face', isPlayer:Bool = false, ?allowGPU:Bool = true)
 	{
 		super();
 		this.isPlayer = isPlayer;
->>>>>>> mobile/main
 		changeIcon(char, allowGPU);
 		scrollFactor.set();
 	}
@@ -43,11 +37,8 @@ class HealthIcon extends FlxSprite
 	public function changeIcon(char:String, ?allowGPU:Bool = true) {
 		if(this.char != char) {
 			var name:String = 'icons/' + char;
-<<<<<<< HEAD
 			if(!Paths.fileExists('images/' + name + '.png', IMAGE) && Paths.fileExists('images/icons/' + char + '/icon.png', IMAGE))
 				name = 'icons/' + char + '/icon'; // Codename Engine icon folders
-=======
->>>>>>> mobile/main
 			if(!Paths.fileExists('images/' + name + '.png', IMAGE)) name = 'icons/icon-' + char; //Older versions of psych engine's support
 			if(!Paths.fileExists('images/' + name + '.png', IMAGE)) name = 'icons/icon-face'; //Prevents crash from missing icon
 			
@@ -64,7 +55,6 @@ class HealthIcon extends FlxSprite
 
 			if(char.endsWith('-pixel'))
 				antialiasing = false;
-<<<<<<< HEAD
 			
 			if(char.endsWith('-3d'))
 				antialiasing = false;
@@ -100,13 +90,11 @@ class HealthIcon extends FlxSprite
 		shader = colorSwap.shader;
 	}
 
-=======
 			else
 				antialiasing = ClientPrefs.data.antialiasing;
 		}
 	}
 
->>>>>>> mobile/main
 	public var autoAdjustOffset:Bool = true;
 	override function updateHitbox()
 	{

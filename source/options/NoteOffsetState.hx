@@ -346,11 +346,8 @@ class NoteOffsetState extends MusicBeatState
 				}
 			}
 
-<<<<<<< HEAD
 			if(controls.RESET)
-=======
 			if(controls.RESET || touchPad.buttonC.justPressed)
->>>>>>> mobile/main
 			{
 				for (i in 0...ClientPrefs.data.comboOffset.length)
 				{
@@ -363,19 +360,13 @@ class NoteOffsetState extends MusicBeatState
 		{
 			if(controls.UI_LEFT_P)
 			{
-<<<<<<< HEAD
-=======
 				holdTime = 0;
->>>>>>> mobile/main
 				barPercent = Math.max(delayMin, Math.min(ClientPrefs.data.noteOffset - 1, delayMax));
 				updateNoteDelay();
 			}
 			else if(controls.UI_RIGHT_P)
 			{
-<<<<<<< HEAD
-=======
 				holdTime = 0;
->>>>>>> mobile/main
 				barPercent = Math.max(delayMin, Math.min(ClientPrefs.data.noteOffset + 1, delayMax));
 				updateNoteDelay();
 			}
@@ -387,11 +378,8 @@ class NoteOffsetState extends MusicBeatState
 				if(controls.UI_LEFT) mult = -1;
 			}
 
-<<<<<<< HEAD
 			if(controls.UI_LEFT_R || controls.UI_RIGHT_R) holdTime = 0;
 
-=======
->>>>>>> mobile/main
 			if(holdTime > 0.5)
 			{
 				barPercent += 100 * addNum * elapsed * mult;
@@ -399,11 +387,8 @@ class NoteOffsetState extends MusicBeatState
 				updateNoteDelay();
 			}
 
-<<<<<<< HEAD
 			if(controls.RESET)
-=======
 			if(controls.RESET || touchPad.buttonC.justPressed)
->>>>>>> mobile/main
 			{
 				holdTime = 0;
 				barPercent = 0;
@@ -550,7 +535,6 @@ class NoteOffsetState extends MusicBeatState
 			controllerPointer.visible = controls.controllerMode;
 		}
 
-<<<<<<< HEAD
 		var str:String;
 		var str2:String;
 		if(onComboMenu)
@@ -565,7 +549,6 @@ class NoteOffsetState extends MusicBeatState
 
 		changeModeText.text = '< ${str.toUpperCase()} ${str2.toUpperCase()} >';
 	}
-=======
 		removeTouchPad();
 
 		var str:String;
@@ -592,5 +575,4 @@ class NoteOffsetState extends MusicBeatState
 		startComboOffset.put();
 		super.destroy();
 	}
->>>>>>> mobile/main
 }

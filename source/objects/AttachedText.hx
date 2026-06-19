@@ -28,8 +28,4 @@ class AttachedText extends Alphabet
 
 		super.update(elapsed);
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> mobile/main

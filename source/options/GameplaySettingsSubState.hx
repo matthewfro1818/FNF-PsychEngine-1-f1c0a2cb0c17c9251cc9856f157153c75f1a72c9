@@ -39,23 +39,18 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 		option.onChange = onChangeAutoPause;
 
-<<<<<<< HEAD
-=======
 		var option:Option = new Option('Pop Up Score',
 			"If unchecked, hitting notes won't make \"sick\", \"good\".. and combo popups\n(Useful for low end " + Main.platform + ").",
 			'popUpRating',
 			BOOL);
 		addOption(option);
 
->>>>>>> mobile/main
 		var option:Option = new Option('Disable Reset Button',
 			"If checked, pressing Reset won't do anything.",
 			'noReset',
 			BOOL);
 		addOption(option);
 
-<<<<<<< HEAD
-=======
 		var option:Option = new Option('Game Over Vibration',
 			"If checked, your device will vibrate at game over.",
 			'gameOverVibration',
@@ -63,7 +58,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 		option.onChange = onChangeVibration;
 
->>>>>>> mobile/main
 		var option:Option = new Option('Sustains as One Note',
 			"If checked, Hold Notes can't be pressed if you miss,\nand count as a single Hit/Miss.\nUncheck this if you prefer the old Input System.",
 			'guitarHeroSustains',
@@ -143,13 +137,10 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 
 	function onChangeAutoPause()
 		FlxG.autoPause = ClientPrefs.data.autoPause;
-<<<<<<< HEAD
-=======
 
 	function onChangeVibration()
 	{
 		if(ClientPrefs.data.gameOverVibration)
 			lime.ui.Haptic.vibrate(0, 500);
 	}
->>>>>>> mobile/main
 }

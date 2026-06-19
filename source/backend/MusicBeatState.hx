@@ -19,8 +19,6 @@ class MusicBeatState extends FlxState
 		return Controls.instance;
 	}
 
-<<<<<<< HEAD
-=======
 	public var touchPad:TouchPad;
 	public var touchPadCam:FlxCamera;
 	public var mobileControls:IMobileControls;
@@ -108,7 +106,6 @@ class MusicBeatState extends FlxState
 		super.destroy();
 	}
 
->>>>>>> mobile/main
 	var _psychCameraInitialized:Bool = false;
 
 	public var variables:Map<String, Dynamic> = new Map<String, Dynamic>();

@@ -1,9 +1,6 @@
 package shaders;
 
-<<<<<<< HEAD
 import flixel.system.FlxAssets.FlxShader;
-=======
->>>>>>> mobile/main
 import objects.Note;
 
 class RGBPalette {

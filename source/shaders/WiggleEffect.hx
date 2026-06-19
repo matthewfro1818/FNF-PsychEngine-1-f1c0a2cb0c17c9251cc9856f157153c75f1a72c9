@@ -1,11 +1,8 @@
 package shaders;
 
 // STOLEN FROM HAXEFLIXEL DEMO LOL
-<<<<<<< HEAD
 import flixel.system.FlxAssets.FlxShader;
 
-=======
->>>>>>> mobile/main
 enum WiggleEffectType
 {
 	DREAMY;

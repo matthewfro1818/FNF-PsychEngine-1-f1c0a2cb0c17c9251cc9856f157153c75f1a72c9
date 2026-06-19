@@ -10,10 +10,7 @@ class StrumNote extends FlxSprite
 	public var rgbShader:RGBShaderReference;
 	public var resetAnim:Float = 0;
 	private var noteData:Int = 0;
-<<<<<<< HEAD
 	public var keyCount:Int = 4;
-=======
->>>>>>> mobile/main
 	public var direction:Float = 90;
 	public var downScroll:Bool = false;
 	public var sustainReduce:Bool = true;
@@ -29,24 +26,17 @@ class StrumNote extends FlxSprite
 	}
 
 	public var useRGBShader:Bool = true;
-<<<<<<< HEAD
 	public function new(x:Float, y:Float, leData:Int, player:Int, ?keyCount:Int = 4) {
-=======
-	public function new(x:Float, y:Float, leData:Int, player:Int) {
->>>>>>> mobile/main
 		animation = new PsychAnimationController(this);
 
 		rgbShader = new RGBShaderReference(this, Note.initializeGlobalRGBShader(leData));
 		rgbShader.enabled = false;
 		if(PlayState.SONG != null && PlayState.SONG.disableNoteRGB) useRGBShader = false;
 		
-<<<<<<< HEAD
 		var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[leData % ClientPrefs.data.arrowRGB.length];
 		if(PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[leData % ClientPrefs.data.arrowRGBPixel.length];
-=======
 		var arr:Array<FlxColor> = ClientPrefs.data.arrowRGB[leData];
 		if(PlayState.isPixelStage) arr = ClientPrefs.data.arrowRGBPixel[leData];
->>>>>>> mobile/main
 		
 		if(leData <= arr.length)
 		{
@@ -59,10 +49,6 @@ class StrumNote extends FlxSprite
 		}
 
 		noteData = leData;
-<<<<<<< HEAD
-		this.keyCount = keyCount;
-=======
->>>>>>> mobile/main
 		this.player = player;
 		this.noteData = leData;
 		this.ID = noteData;
@@ -127,7 +113,6 @@ class StrumNote extends FlxSprite
 			animation.addByPrefix('purple', 'arrowLEFT');
 			animation.addByPrefix('red', 'arrowRIGHT');
 
-<<<<<<< HEAD
 			antialiasing = Note.is3DNoteTexture(texture) ? false : ClientPrefs.data.antialiasing;
 			if(Note.is3DNoteTexture(texture))
 			{
@@ -184,7 +169,6 @@ class StrumNote extends FlxSprite
 				animation.addByPrefix('static', staticPrefix);
 				animation.addByPrefix('pressed', animPrefix + ' press', 24, false);
 				animation.addByPrefix('confirm', animPrefix + ' confirm', 24, false);
-=======
 			antialiasing = ClientPrefs.data.antialiasing;
 			setGraphicSize(Std.int(width * 0.7));
 
@@ -206,7 +190,6 @@ class StrumNote extends FlxSprite
 					animation.addByPrefix('static', 'arrowRIGHT');
 					animation.addByPrefix('pressed', 'right press', 24, false);
 					animation.addByPrefix('confirm', 'right confirm', 24, false);
->>>>>>> mobile/main
 			}
 		}
 		updateHitbox();
@@ -219,7 +202,6 @@ class StrumNote extends FlxSprite
 
 	public function playerPosition()
 	{
-<<<<<<< HEAD
 		var gap:Float = switch(keyCount)
 		{
 			case 1: width;
@@ -258,11 +240,9 @@ class StrumNote extends FlxSprite
 		x += ((FlxG.width / 2) * player);
 		x -= xOffset;
 		y += yOffset;
-=======
 		x += Note.swagWidth * noteData;
 		x += 50;
 		x += ((FlxG.width / 2) * player);
->>>>>>> mobile/main
 	}
 
 	override function update(elapsed:Float) {
@@ -283,12 +263,9 @@ class StrumNote extends FlxSprite
 			centerOffsets();
 			centerOrigin();
 		}
-<<<<<<< HEAD
 		if(useRGBShader && !Note.is3DNoteTexture(texture))
 			rgbShader.enabled = (animation.curAnim != null && animation.curAnim.name != 'static');
 		else rgbShader.enabled = false;
-=======
 		if(useRGBShader) rgbShader.enabled = (animation.curAnim != null && animation.curAnim.name != 'static');
->>>>>>> mobile/main
 	}
 }

@@ -3,10 +3,7 @@ package backend;
 import lime.utils.Assets;
 import openfl.utils.Assets as OpenFlAssets;
 import haxe.Json;
-<<<<<<< HEAD
 import haxe.xml.Access;
-=======
->>>>>>> mobile/main
 
 typedef WeekFile =
 {
@@ -128,11 +125,8 @@ class WeekData {
 					}
 				}
 
-<<<<<<< HEAD
 				for (file in FileSystem.readDirectory(directory))
-=======
 				for (file in Paths.readDirectory(directory))
->>>>>>> mobile/main
 				{
 					var path = haxe.io.Path.join([directory, file]);
 					if (!FileSystem.isDirectory(path) && file.endsWith('.json'))
@@ -142,7 +136,6 @@ class WeekData {
 				}
 			}
 		}
-<<<<<<< HEAD
 
 		for (mod in Mods.parseList().enabled)
 		{
@@ -295,11 +288,9 @@ class WeekData {
 		return name.charAt(0).toUpperCase() + name.substr(1);
 	}
 
-=======
 		#end
 	}
 
->>>>>>> mobile/main
 	private static function addWeek(weekToCheck:String, path:String, directory:String, i:Int, originalLength:Int)
 	{
 		if(!weeksLoaded.exists(weekToCheck))

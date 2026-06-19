@@ -34,11 +34,8 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		antialiasingOption = optionsArray.length-1;
 
 		var option:Option = new Option('Shaders', //Name
-<<<<<<< HEAD
 			"If unchecked, disables shaders.\nIt's used for some visual effects, and also CPU intensive for weaker PCs.", //Description
-=======
 			"If unchecked, disables shaders.\nIt's used for some visual effects, and also CPU intensive for weaker " + Main.platform + ".", //Description
->>>>>>> mobile/main
 			'shaders',
 			BOOL);
 		addOption(option);
@@ -64,15 +61,12 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		option.onChange = onChangeFramerate;
 		#end
 
-<<<<<<< HEAD
-=======
 		var option:Option = new Option('FPS Rework',
 			"If checked, this works around the game becoming \"slow\" and \"smooth\" when the current FPS is lower than the FPS cap.",
 			'fpsRework',
 			BOOL);
 		addOption(option);
 
->>>>>>> mobile/main
 		super();
 		insert(1, boyfriend);
 	}
@@ -92,7 +86,6 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 	{
 		if(ClientPrefs.data.framerate > FlxG.drawFramerate)
 		{
-<<<<<<< HEAD
 			FlxG.updateFramerate = ClientPrefs.data.framerate;
 			FlxG.drawFramerate = ClientPrefs.data.framerate;
 		}
@@ -100,7 +93,6 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		{
 			FlxG.drawFramerate = ClientPrefs.data.framerate;
 			FlxG.updateFramerate = ClientPrefs.data.framerate;
-=======
 			if (ClientPrefs.data.fpsRework)
 				FlxG.stage.window.frameRate = ClientPrefs.data.framerate;
 			else
@@ -118,7 +110,6 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 				FlxG.drawFramerate = ClientPrefs.data.framerate;
 				FlxG.updateFramerate = ClientPrefs.data.framerate;
 			}
->>>>>>> mobile/main
 		}
 	}
 

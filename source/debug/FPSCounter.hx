@@ -1,25 +1,20 @@
 package debug;
 
 import flixel.FlxG;
-<<<<<<< HEAD
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.system.System;
-=======
 import openfl.Lib;
 import haxe.Timer;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.system.System as OpenFlSystem;
 import lime.system.System as LimeSystem;
->>>>>>> mobile/main
 
 /**
 	The FPS class provides an easy-to-use monitor to display
 	the current frame rate of an OpenFL project
 **/
-<<<<<<< HEAD
-=======
 #if cpp
 #if windows
 @:cppFileCode('#include <windows.h>')
@@ -29,7 +24,6 @@ import lime.system.System as LimeSystem;
 @:headerInclude('sys/utsname.h')
 #end
 #end
->>>>>>> mobile/main
 class FPSCounter extends TextField
 {
 	/**
@@ -43,24 +37,19 @@ class FPSCounter extends TextField
 	public var memoryMegas(get, never):Float;
 
 	@:noCompletion private var times:Array<Float>;
-<<<<<<< HEAD
-=======
 	@:noCompletion private var lastFramerateUpdateTime:Float;
 	@:noCompletion private var updateTime:Int;
 	@:noCompletion private var framesCount:Int;
 	@:noCompletion private var prevTime:Int;
 
 	public var os:String = '';
->>>>>>> mobile/main
 
 	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
 	{
 		super();
 
-<<<<<<< HEAD
 		this.x = x;
 		this.y = y;
-=======
 		#if !officialBuild
 		if (LimeSystem.platformName == LimeSystem.platformVersion || LimeSystem.platformVersion == null)
 			os = '\nOS: ${LimeSystem.platformName}' #if cpp + ' ${getArch() != 'Unknown' ? getArch() : ''}' #end;
@@ -69,22 +58,17 @@ class FPSCounter extends TextField
 		#end
 
 		positionFPS(x, y);
->>>>>>> mobile/main
 
 		currentFPS = 0;
 		selectable = false;
 		mouseEnabled = false;
 		defaultTextFormat = new TextFormat("_sans", 14, color);
-<<<<<<< HEAD
 		autoSize = LEFT;
-=======
 		width = FlxG.width;
->>>>>>> mobile/main
 		multiline = true;
 		text = "FPS: ";
 
 		times = [];
-<<<<<<< HEAD
 	}
 
 	var deltaTimeout:Float = 0.0;
@@ -113,7 +97,6 @@ class FPSCounter extends TextField
 		textColor = 0xFFFFFFFF;
 		if (currentFPS < FlxG.drawFramerate * 0.5)
 			textColor = 0xFFFF0000;
-=======
 		lastFramerateUpdateTime = Timer.stamp();
 		prevTime = Lib.getTimer();
 		updateTime = prevTime + 500;
@@ -180,13 +163,10 @@ class FPSCounter extends TextField
 		}
 
 		updateText();
->>>>>>> mobile/main
 	}
 
 	inline function get_memoryMegas():Float
 		return cpp.vm.Gc.memInfo64(cpp.vm.Gc.MEM_INFO_USAGE);
-<<<<<<< HEAD
-=======
 
 	public inline function positionFPS(X:Float, Y:Float, ?scale:Float = 1){
 		scaleX = scaleY = #if android (scale > 1 ? scale : 1) #else (scale < 1 ? scale : 1) #end;
@@ -235,5 +215,4 @@ class FPSCounter extends TextField
 		return "Unknown";
 	}
 	#end
->>>>>>> mobile/main
 }

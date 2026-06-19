@@ -158,8 +158,5 @@ class DeprecatedFunctions
 			FunkinLua.luaTrace('updateHitboxFromGroup is deprecated! Use updateHitbox instead.', false, true);
 		});
 	}
-<<<<<<< HEAD
 }
-=======
 }
->>>>>>> mobile/main
