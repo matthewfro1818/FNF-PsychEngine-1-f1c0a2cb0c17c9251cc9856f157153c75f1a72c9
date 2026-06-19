@@ -7,7 +7,7 @@ permissions:
 
 env:
   PROJECT_NAME: PsychEngine
-  REPO_PATH: kittycathy233/FNF-PsychEngine-Mobile-1.0.4
+  REPO_PATH: matthewfro1818/FNF-PsychEngine-1-f1c0a2cb0c17c9251cc9856f157153c75f1a72c9
 
 jobs:
   get-commit-hash:
