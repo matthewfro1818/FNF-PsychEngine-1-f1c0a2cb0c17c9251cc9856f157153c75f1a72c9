@@ -208,6 +208,7 @@ class Main extends Sprite
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		FlxG.game.focusLostFramerate = #if mobile 30 #else 60 #end;
+		#end
 		#if web
 		FlxG.keys.preventDefaultKeys.push(TAB);
 		#else
