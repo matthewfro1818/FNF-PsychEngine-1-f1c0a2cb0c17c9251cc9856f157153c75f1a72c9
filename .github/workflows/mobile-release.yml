@@ -1,5 +1,11 @@
 name: Mobile + Release
-on: workflow_dispatch
+
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main, experimental ]
+  pull_request:
+    branches: [ main, experimental ]
 
 permissions:
   contents: write
@@ -7,7 +13,7 @@ permissions:
 
 env:
   PROJECT_NAME: PsychEngine
-  REPO_PATH: matthewfro1818/FNF-PsychEngine-1-f1c0a2cb0c17c9251cc9856f157153c75f1a72c9
+  REPO_PATH: matthewfro1818/FNF-PsychEngine-3
 
 jobs:
   get-commit-hash:
