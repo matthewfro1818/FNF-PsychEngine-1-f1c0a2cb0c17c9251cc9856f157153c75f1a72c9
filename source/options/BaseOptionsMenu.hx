@@ -29,6 +29,11 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	public var bg:FlxSprite;
 	public function new()
 	{
+<<<<<<< HEAD
+=======
+		controls.isInSubstate = true;
+
+>>>>>>> mobile/main
 		super();
 
 		if(title == null) title = 'Options';
@@ -103,6 +108,11 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 		changeSelection();
 		reloadCheckboxes();
+<<<<<<< HEAD
+=======
+		
+		addTouchPad('LEFT_FULL', 'A_B_C');
+>>>>>>> mobile/main
 	}
 
 	public function addOption(option:Option) {
@@ -170,8 +180,16 @@ class BaseOptionsMenu extends MusicBeatSubstate
 						bindingText = new Alphabet(FlxG.width / 2, 160, Language.getPhrase('controls_rebinding', 'Rebinding {1}', [curOption.name]), false);
 						bindingText.alignment = CENTERED;
 						add(bindingText);
+<<<<<<< HEAD
 						
 						bindingText2 = new Alphabet(FlxG.width / 2, 340, Language.getPhrase('controls_rebinding2', 'Hold ESC to Cancel\nHold Backspace to Delete'), true);
+=======
+
+						final escape:String = (controls.mobileC) ? "B" : "ESC";
+						final backspace:String = (controls.mobileC) ? "C" : "Backspace";
+						
+						bindingText2 = new Alphabet(FlxG.width / 2, 340, Language.getPhrase('controls_rebinding2', 'Hold {1} to Cancel\nHold {2} to Delete', [escape, backspace]), true);
+>>>>>>> mobile/main
 						bindingText2.alignment = CENTERED;
 						add(bindingText2);
 	
@@ -262,7 +280,11 @@ class BaseOptionsMenu extends MusicBeatSubstate
 					}
 			}
 
+<<<<<<< HEAD
 			if(controls.RESET)
+=======
+			if(controls.RESET || touchPad.buttonC.justPressed)
+>>>>>>> mobile/main
 			{
 				var leOption:Option = optionsArray[curSelected];
 				if(leOption.type != KEYBIND)
@@ -292,7 +314,11 @@ class BaseOptionsMenu extends MusicBeatSubstate
 
 	function bindingKeyUpdate(elapsed:Float)
 	{
+<<<<<<< HEAD
 		if(FlxG.keys.pressed.ESCAPE || FlxG.gamepads.anyPressed(B))
+=======
+		if(touchPad.buttonB.pressed || FlxG.keys.pressed.ESCAPE || FlxG.gamepads.anyPressed(B))
+>>>>>>> mobile/main
 		{
 			holdingEsc += elapsed;
 			if(holdingEsc > 0.5)
@@ -301,7 +327,11 @@ class BaseOptionsMenu extends MusicBeatSubstate
 				closeBinding();
 			}
 		}
+<<<<<<< HEAD
 		else if (FlxG.keys.pressed.BACKSPACE || FlxG.gamepads.anyPressed(BACK))
+=======
+		else if (touchPad.buttonC.pressed || FlxG.keys.pressed.BACKSPACE || FlxG.gamepads.anyPressed(BACK))
+>>>>>>> mobile/main
 		{
 			holdingEsc += elapsed;
 			if(holdingEsc > 0.5)

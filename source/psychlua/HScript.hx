@@ -1,7 +1,10 @@
 package psychlua;
 
 import flixel.FlxBasic;
+<<<<<<< HEAD
 import flixel.group.FlxGroup.FlxTypedGroup;
+=======
+>>>>>>> mobile/main
 import objects.Character;
 import psychlua.LuaUtils;
 import psychlua.CustomSubstate;
@@ -108,7 +111,10 @@ class HScript extends Iris
 				scriptName = f;
 			}
 		}
+<<<<<<< HEAD
 		scriptThing = preprocessCompatSource(scriptThing);
+=======
+>>>>>>> mobile/main
 		#if LUA_ALLOWED
 		if (scriptName == null && parent != null)
 			scriptName = parent.scriptName;
@@ -141,6 +147,7 @@ class HScript extends Iris
 	}
 
 	var varsToBring(default, set):Any = null;
+<<<<<<< HEAD
 	static function preprocessCompatSource(source:String):String
 	{
 		if(source == null || source.length < 1) return source;
@@ -194,11 +201,14 @@ class HScript extends Iris
 		return source;
 	}
 
+=======
+>>>>>>> mobile/main
 	override function preset() {
 		super.preset();
 
 		// Some very commonly used classes
 		set('Type', Type);
+<<<<<<< HEAD
 		set('Reflect', Reflect);
 		set('Json', CompatJson);
 		set('Map', haxe.ds.StringMap);
@@ -206,6 +216,8 @@ class HScript extends Iris
 		set('Xml', Xml);
 		set('FlxKey', CompatFlxKey);
 		set('FlxGamepadInputID', CompatFlxGamepadInputID);
+=======
+>>>>>>> mobile/main
 		#if sys
 		set('File', File);
 		set('FileSystem', FileSystem);
@@ -213,6 +225,7 @@ class HScript extends Iris
 		set('FlxG', flixel.FlxG);
 		set('FlxMath', flixel.math.FlxMath);
 		set('FlxSprite', flixel.FlxSprite);
+<<<<<<< HEAD
 		set('FlxBackdrop', flixel.addons.display.FlxBackdrop);
 		set('FlxGridOverlay', flixel.addons.display.FlxGridOverlay);
 		set('FlxTypeText', flixel.addons.text.FlxTypeText);
@@ -233,11 +246,15 @@ class HScript extends Iris
 		set('FlxTextFormat', flixel.text.FlxTextFormat);
 		set('FlxTextFormatMarkerPair', flixel.text.FlxTextFormatMarkerPair);
 		set('FunkinText', flixel.text.FlxText);
+=======
+		set('FlxText', flixel.text.FlxText);
+>>>>>>> mobile/main
 		set('FlxCamera', flixel.FlxCamera);
 		set('PsychCamera', backend.PsychCamera);
 		set('FlxTimer', flixel.util.FlxTimer);
 		set('FlxTween', flixel.tweens.FlxTween);
 		set('FlxEase', flixel.tweens.FlxEase);
+<<<<<<< HEAD
 		set('FlxBar', flixel.ui.FlxBar);
 		set('FlxGradient', flixel.util.FlxGradient);
 		set('FlxSave', flixel.util.FlxSave);
@@ -253,12 +270,20 @@ class HScript extends Iris
 		set('Paths', Paths);
 		set('CoolUtil', CoolUtil);
 		set('Chart', CompatChart);
+=======
+		set('FlxColor', CustomFlxColor);
+		set('Countdown', backend.BaseStage.Countdown);
+		set('PlayState', PlayState);
+		set('Paths', Paths);
+		set('StorageUtil', StorageUtil);
+>>>>>>> mobile/main
 		set('Conductor', Conductor);
 		set('ClientPrefs', ClientPrefs);
 		#if ACHIEVEMENTS_ALLOWED
 		set('Achievements', Achievements);
 		#end
 		set('Character', Character);
+<<<<<<< HEAD
 		set('CharacterFactory', objects.CharacterFactory);
 		set('BGSprite', objects.BGSprite);
 		set('HealthIcon', objects.HealthIcon);
@@ -277,6 +302,10 @@ class HScript extends Iris
 		set('RGBPalette', shaders.RGBPalette);
 		set('RGBShaderReference', shaders.RGBPalette.RGBShaderReference);
 		set('CustomShader', CompatCustomShader);
+=======
+		set('Alphabet', Alphabet);
+		set('Note', objects.Note);
+>>>>>>> mobile/main
 		set('CustomSubstate', CustomSubstate);
 		#if (!flash && sys)
 		set('FlxRuntimeShader', flixel.addons.display.FlxRuntimeShader);
@@ -284,9 +313,12 @@ class HScript extends Iris
 		#end
 		set('ShaderFilter', openfl.filters.ShaderFilter);
 		set('StringTools', StringTools);
+<<<<<<< HEAD
 		set('Image', lime.graphics.Image);
 		set('NativeAPI', CompatNativeAPI);
 		set('WindowUtils', CompatWindowUtils);
+=======
+>>>>>>> mobile/main
 		#if flxanimate
 		set('FlxAnimate', FlxAnimate);
 		#end
@@ -314,7 +346,10 @@ class HScript extends Iris
 			if(color == null) color = FlxColor.WHITE;
 			PlayState.instance.addTextToDebug(text, color);
 		});
+<<<<<<< HEAD
 		set('lerp', function(a:Float, b:Float, ratio:Float) return flixel.math.FlxMath.lerp(a, b, ratio));
+=======
+>>>>>>> mobile/main
 		set('getModSetting', function(saveTag:String, ?modName:String = null) {
 			if(modName == null)
 			{
@@ -443,6 +478,50 @@ class HScript extends Iris
 		});
 		#if LUA_ALLOWED
 		set('parentLua', parentLua);
+<<<<<<< HEAD
+=======
+
+		set("addTouchPad", (DPadMode:String, ActionMode:String) -> {
+			PlayState.instance.makeLuaTouchPad(DPadMode, ActionMode);
+			PlayState.instance.addLuaTouchPad();
+		  });
+  
+		set("removeTouchPad", () -> {
+			PlayState.instance.removeLuaTouchPad();
+		});
+  
+		set("addTouchPadCamera", () -> {
+			if(PlayState.instance.luaTouchPad == null){
+				FunkinLua.luaTrace('addTouchPadCamera: TPAD does not exist.');
+				return;
+			}
+			PlayState.instance.addLuaTouchPadCamera();
+		});
+  
+		set("touchPadJustPressed", function(button:Dynamic):Bool {
+			if(PlayState.instance.luaTouchPad == null){
+			  //FunkinLua.luaTrace('touchPadJustPressed: TPAD does not exist.');
+			  return false;
+			}
+		  return PlayState.instance.luaTouchPadJustPressed(button);
+		});
+  
+		set("touchPadPressed", function(button:Dynamic):Bool {
+			if(PlayState.instance.luaTouchPad == null){
+				//FunkinLua.luaTrace('touchPadPressed: TPAD does not exist.');
+				return false;
+			}
+			return PlayState.instance.luaTouchPadPressed(button);
+		});
+  
+		set("touchPadJustReleased", function(button:Dynamic):Bool {
+			if(PlayState.instance.luaTouchPad == null){
+				//FunkinLua.luaTrace('touchPadJustReleased: TPAD does not exist.');
+				return false;
+			}
+			return PlayState.instance.luaTouchPadJustReleased(button);
+		});
+>>>>>>> mobile/main
 		#else
 		set('parentLua', null);
 		#end
@@ -450,6 +529,7 @@ class HScript extends Iris
 		set('game', FlxG.state);
 		set('controls', Controls.instance);
 
+<<<<<<< HEAD
 		// Light compatibility aliases used by several Codename/Yoshi-style scripts.
 		// Keep these additive and conservative: Psych fields still remain the source of truth.
 		if(Std.isOfType(FlxG.state, PlayState))
@@ -496,6 +576,8 @@ class HScript extends Iris
 			set('addBehindDad', function(obj:FlxBasic) return playState.insert(playState.members.indexOf(playState.dadGroup), obj));
 		}
 
+=======
+>>>>>>> mobile/main
 		set('buildTarget', LuaUtils.getBuildTarget());
 		set('customSubstate', CustomSubstate.instance);
 		set('customSubstateName', CustomSubstate.name);
@@ -507,11 +589,14 @@ class HScript extends Iris
 		set('Function_StopAll', LuaUtils.Function_StopAll);
 	}
 
+<<<<<<< HEAD
 	public function getCompatValue(name:String):Dynamic
 	{
 		return interp != null && interp.variables.exists(name) ? interp.variables.get(name) : null;
 	}
 
+=======
+>>>>>>> mobile/main
 	#if LUA_ALLOWED
 	public static function implement(funk:FunkinLua) {
 		funk.addLocalCallback("runHaxeCode", function(codeToRun:String, ?varsToBring:Any = null, ?funcToRun:String = null, ?funcArgs:Array<Dynamic> = null):Dynamic {
@@ -688,6 +773,7 @@ class CustomFlxColor {
 		return cast FlxColor.fromString(str);
 }
 
+<<<<<<< HEAD
 class CompatOptions {
 	public static var antialiasing(get, never):Bool;
 	public static var downscroll(get, never):Bool;
@@ -907,6 +993,8 @@ class CompatEvents {
 	}
 }
 
+=======
+>>>>>>> mobile/main
 class CustomInterp extends crowplexus.hscript.Interp
 {
 	public var parentInstance(default, set):Dynamic = [];

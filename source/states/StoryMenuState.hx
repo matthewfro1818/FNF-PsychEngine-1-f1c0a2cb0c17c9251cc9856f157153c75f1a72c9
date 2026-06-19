@@ -57,11 +57,21 @@ class StoryMenuState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
+<<<<<<< HEAD
+=======
+		final accept:String = (controls.mobileC) ? "A" : "ACCEPT";
+		final reject:String = (controls.mobileC) ? "B" : "BACK";
+
+>>>>>>> mobile/main
 		if(WeekData.weeksList.length < 1)
 		{
 			FlxTransitionableState.skipNextTransIn = true;
 			persistentUpdate = false;
+<<<<<<< HEAD
 			MusicBeatState.switchState(new states.ErrorState("NO WEEKS ADDED FOR STORY MODE\n\nPress ACCEPT to go to the Week Editor Menu.\nPress BACK to return to Main Menu.",
+=======
+			MusicBeatState.switchState(new states.ErrorState("NO WEEKS ADDED FOR STORY MODE\n\nPress " + accept + " to go to the Week Editor Menu.\nPress " + reject + " to return to Main Menu.",
+>>>>>>> mobile/main
 				function() MusicBeatState.switchState(new states.editors.WeekEditorState()),
 				function() MusicBeatState.switchState(new states.MainMenuState())));
 			return;
@@ -185,6 +195,11 @@ class StoryMenuState extends MusicBeatState
 		changeWeek();
 		changeDifficulty();
 
+<<<<<<< HEAD
+=======
+		addTouchPad('LEFT_FULL', 'A_B_X_Y');
+
+>>>>>>> mobile/main
 		super.create();
 	}
 
@@ -192,6 +207,11 @@ class StoryMenuState extends MusicBeatState
 		persistentUpdate = true;
 		changeWeek();
 		super.closeSubState();
+<<<<<<< HEAD
+=======
+		removeTouchPad();
+		addTouchPad('LEFT_FULL', 'A_B_X_Y');
+>>>>>>> mobile/main
 	}
 
 	override function update(elapsed:Float)
@@ -260,6 +280,7 @@ class StoryMenuState extends MusicBeatState
 			else if (changeDiff)
 				changeDifficulty();
 
+<<<<<<< HEAD
 			if(FlxG.keys.justPressed.CONTROL)
 			{
 				persistentUpdate = false;
@@ -269,6 +290,19 @@ class StoryMenuState extends MusicBeatState
 			{
 				persistentUpdate = false;
 				openSubState(new ResetScoreSubState('', curDifficulty, '', curWeek));
+=======
+			if(FlxG.keys.justPressed.CONTROL || touchPad.buttonX.justPressed)
+			{
+				persistentUpdate = false;
+				openSubState(new GameplayChangersSubstate());
+				removeTouchPad();
+			}
+			else if(controls.RESET || touchPad.buttonY.justPressed)
+			{
+				persistentUpdate = false;
+				openSubState(new ResetScoreSubState('', curDifficulty, '', curWeek));
+				removeTouchPad();
+>>>>>>> mobile/main
 				//FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
 			else if (controls.ACCEPT)

@@ -10,9 +10,13 @@ import openfl.utils.Assets;
 import haxe.Json;
 
 import backend.Song;
+<<<<<<< HEAD
 import backend.CompatData;
 import states.stages.objects.TankmenBG;
 import shaders.ColorSwap;
+=======
+import states.stages.objects.TankmenBG;
+>>>>>>> mobile/main
 
 typedef CharacterFile = {
 	var animations:Array<AnimArray>;
@@ -55,8 +59,11 @@ class Character extends FlxSprite
 	public var curCharacter:String = DEFAULT_CHARACTER;
 
 	public var holdTimer:Float = 0;
+<<<<<<< HEAD
 	public var lastSingStrumTime:Float = -999999;
 	public var spamChainCount:Int = 0;
+=======
+>>>>>>> mobile/main
 	public var heyTimer:Float = 0;
 	public var specialAnim:Bool = false;
 	public var animationNotes:Array<Dynamic> = [];
@@ -71,10 +78,13 @@ class Character extends FlxSprite
 
 	public var positionArray:Array<Float> = [0, 0];
 	public var cameraPosition:Array<Float> = [0, 0];
+<<<<<<< HEAD
 	public var camx(get, set):Float;
 	public var camy(get, set):Float;
 	public var depth:Int = 0;
 	public var colorSwap:ColorSwap;
+=======
+>>>>>>> mobile/main
 	public var healthColorArray:Array<Int> = [255, 0, 0];
 
 	public var missingCharacter:Bool = false;
@@ -107,6 +117,7 @@ class Character extends FlxSprite
 				playAnim("shoot1");
 			case 'pico-blazin', 'darnell-blazin':
 				skipDance = true;
+<<<<<<< HEAD
 			case 'flareon':
 				healthIcon = 'flareon-pixel';
 				healthColorArray = [247, 123, 62];
@@ -125,6 +136,9 @@ class Character extends FlxSprite
 				positionArray = [0, -100];
 				cameraPosition = [0, 0];
 			}
+=======
+		}
+>>>>>>> mobile/main
 	}
 
 	public function changeCharacter(character:String)
@@ -132,8 +146,11 @@ class Character extends FlxSprite
 		animationsArray = [];
 		animOffsets = [];
 		curCharacter = character;
+<<<<<<< HEAD
 		colorSwap = new ColorSwap();
 		shader = colorSwap.shader;
+=======
+>>>>>>> mobile/main
 		var characterPath:String = 'characters/$character.json';
 
 		var path:String = Paths.getPath(characterPath, TEXT);
@@ -143,6 +160,7 @@ class Character extends FlxSprite
 		if (!Assets.exists(path))
 		#end
 		{
+<<<<<<< HEAD
 			#if MODS_ALLOWED
 			var codenamePath:String = Paths.getPath('data/characters/$character.xml', TEXT);
 			if(FileSystem.exists(codenamePath))
@@ -195,6 +213,8 @@ class Character extends FlxSprite
 					trace('Error loading YoshiCrafter character file of "$character": $e');
 			}
 			#end
+=======
+>>>>>>> mobile/main
 			path = Paths.getSharedPath('characters/' + DEFAULT_CHARACTER + '.json'); //If a character couldn't be found, change him to BF just to prevent a crash
 			missingCharacter = true;
 			missingText = new FlxText(0, 0, 300, 'ERROR:\n$character.json', 16);
@@ -270,7 +290,10 @@ class Character extends FlxSprite
 		singDuration = json.sing_duration;
 		flipX = (json.flip_x != isPlayer);
 		healthColorArray = (json.healthbar_colors != null && json.healthbar_colors.length > 2) ? json.healthbar_colors : [161, 161, 161];
+<<<<<<< HEAD
 		applySavedColorSwap();
+=======
+>>>>>>> mobile/main
 		vocalsFile = json.vocals_file != null ? json.vocals_file : '';
 		originalFlipX = (json.flip_x == true);
 		editorIsPlayer = json._editor_isPlayer;
@@ -316,6 +339,7 @@ class Character extends FlxSprite
 		//trace('Loaded file to character ' + curCharacter);
 	}
 
+<<<<<<< HEAD
 	public inline function getIcon():String
 		return healthIcon;
 
@@ -389,6 +413,8 @@ class Character extends FlxSprite
 		return baseAnim;
 	}
 
+=======
+>>>>>>> mobile/main
 	override function update(elapsed:Float)
 	{
 		if(isAnimateAtlas) atlas.update(elapsed);
@@ -461,7 +487,10 @@ class Character extends FlxSprite
 		return !isAnimateAtlas ? (animation.curAnim == null) : (atlas.anim.curInstance == null || atlas.anim.curSymbol == null);
 	}
 
+<<<<<<< HEAD
 	@:allow(objects.FlareonCharacter)
+=======
+>>>>>>> mobile/main
 	var _lastPlayedAnimation:String;
 	inline public function getAnimationName():String
 	{

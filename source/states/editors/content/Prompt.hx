@@ -29,6 +29,10 @@ class Prompt extends BasePrompt
 		if(_yesTxt != null) this._yesTxt = _yesTxt;
 		if(_noTxt != null) this._noTxt = _noTxt;
 		this.yesFunction = yesFunction;
+<<<<<<< HEAD
+=======
+		controls.isInSubstate = true;
+>>>>>>> mobile/main
 		this.noFunction = noFunction;
 		super(title, promptCreate);
 	}
@@ -38,6 +42,10 @@ class Prompt extends BasePrompt
 		var btnY = 390;
 		var btn:PsychUIButton = new PsychUIButton(0, btnY, _yesTxt, function() {
 			yesFunction();
+<<<<<<< HEAD
+=======
+			controls.isInSubstate = false;
+>>>>>>> mobile/main
 			close();
 		});
 		btn.normalStyle.bgColor = FlxColor.RED;
@@ -111,6 +119,10 @@ class BasePrompt extends MusicBeatSubstate
 		_blockInput = Math.max(0, _blockInput - elapsed);
 		if(_blockInput <= 0 && FlxG.keys.justPressed.ESCAPE)
 		{
+<<<<<<< HEAD
+=======
+			controls.isInSubstate = false;
+>>>>>>> mobile/main
 			close();
 			return;
 		}
@@ -124,4 +136,8 @@ class BasePrompt extends MusicBeatSubstate
 		for (member in members) FlxDestroyUtil.destroy(member);
 		super.destroy();
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

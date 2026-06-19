@@ -7,8 +7,11 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.frames.FlxFrame;
 import flixel.group.FlxGroup;
 import flixel.input.gamepad.FlxGamepad;
+<<<<<<< HEAD
 import flixel.addons.display.FlxBackdrop; 
 
+=======
+>>>>>>> mobile/main
 import haxe.Json;
 
 import openfl.Assets;
@@ -89,6 +92,10 @@ class TitleState extends MusicBeatState
 			}
 			persistentUpdate = true;
 			persistentDraw = true;
+<<<<<<< HEAD
+=======
+			MobileData.init();
+>>>>>>> mobile/main
 		}
 
 		if (FlxG.save.data.weekCompleted != null)
@@ -104,6 +111,10 @@ class TitleState extends MusicBeatState
 		#else
 		if(FlxG.save.data.flashing == null && !FlashingState.leftState)
 		{
+<<<<<<< HEAD
+=======
+			controls.isInSubstate = false; //idfk what's wrong
+>>>>>>> mobile/main
 			FlxTransitionableState.skipNextTransIn = true;
 			FlxTransitionableState.skipNextTransOut = true;
 			MusicBeatState.switchState(new FlashingState());
@@ -118,7 +129,10 @@ class TitleState extends MusicBeatState
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
 	var swagShader:ColorSwap = null;
+<<<<<<< HEAD
     var checker:FlxBackdrop;
+=======
+>>>>>>> mobile/main
 
 	function startIntro()
 	{
@@ -189,6 +203,7 @@ class TitleState extends MusicBeatState
 		blackScreen.updateHitbox();
 		credGroup.add(blackScreen);
 
+<<<<<<< HEAD
 		checker = new FlxBackdrop(Paths.image('Grid_lmao'), XY, 1, 1); 
         //checker.velocity.set(112, 110); 
 		checker.updateHitbox(); 
@@ -197,6 +212,8 @@ class TitleState extends MusicBeatState
 		checker.screenCenter(X); 
 		add(checker); 
 
+=======
+>>>>>>> mobile/main
 		credTextShit = new Alphabet(0, 0, "", true);
 		credTextShit.screenCenter();
 		credTextShit.visible = false;
@@ -333,14 +350,18 @@ class TitleState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+<<<<<<< HEAD
 		var scrollSpeed:Float = 50;
 		checker.x -= scrollSpeed * elapsed;
 		checker.y -= scrollSpeed * elapsed;
 
+=======
+>>>>>>> mobile/main
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
 
+<<<<<<< HEAD
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT;
 
 		#if mobile
@@ -352,6 +373,9 @@ class TitleState extends MusicBeatState
 			}
 		}
 		#end
+=======
+		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT || TouchUtil.justPressed;
+>>>>>>> mobile/main
 
 		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 

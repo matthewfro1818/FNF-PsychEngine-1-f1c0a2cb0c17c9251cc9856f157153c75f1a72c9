@@ -34,7 +34,11 @@ class Paths
 			dumpExclusions.push(key);
 	}
 
+<<<<<<< HEAD
 	public static var dumpExclusions:Array<String> = ['assets/shared/music/freakyMenu.$SOUND_EXT'];
+=======
+	public static var dumpExclusions:Array<String> = ['assets/shared/music/freakyMenu.$SOUND_EXT', 'assets/shared/mobile/touchpad/bg.png'];
+>>>>>>> mobile/main
 	// haya I love you for the base cache dump I took to the max
 	public static function clearUnusedMemory()
 	{
@@ -51,6 +55,12 @@ class Paths
 
 		// run the garbage collector for good measure lmfao
 		System.gc();
+<<<<<<< HEAD
+=======
+		#if cpp
+		cpp.NativeGc.run(true);
+		#end
+>>>>>>> mobile/main
 	}
 
 	// define the locally tracked assets
@@ -159,6 +169,11 @@ class Paths
 			if(FileSystem.exists(modded)) return modded;
 		}
 		#end
+<<<<<<< HEAD
+=======
+		if(parentfolder == "mobile")
+			return getSharedPath('mobile/$file');
+>>>>>>> mobile/main
 
 		if (parentfolder != null)
 			return getFolderPath(file, parentfolder);
@@ -187,9 +202,12 @@ class Paths
 	inline static public function json(key:String, ?folder:String)
 		return getPath('data/$key.json', TEXT, folder, true);
 
+<<<<<<< HEAD
 	inline static public function chart(song:String, difficulty:String)
 		return backend.Song.chartPath;
 
+=======
+>>>>>>> mobile/main
 	inline static public function shaderFragment(key:String, ?folder:String)
 		return getPath('shaders/$key.frag', TEXT, folder, true);
 
@@ -215,6 +233,7 @@ class Paths
 		return returnSound('music/$key', modsAllowed);
 
 	inline static public function inst(song:String, ?modsAllowed:Bool = true):Sound
+<<<<<<< HEAD
 	{
 		var formattedSong = formatToSongPath(song);
 		#if MODS_ALLOWED
@@ -235,6 +254,14 @@ class Paths
 		if(modsAllowed && fileExists('$nestedSongKey.$SOUND_EXT', SOUND, false, 'songs'))
 			return returnSound(nestedSongKey, 'songs', modsAllowed, false);
 		#end
+=======
+		return returnSound('${formatToSongPath(song)}/Inst', 'songs', modsAllowed);
+
+	inline static public function voices(song:String, postfix:String = null, ?modsAllowed:Bool = true):Sound
+	{
+		var songKey:String = '${formatToSongPath(song)}/Voices';
+		if(postfix != null) songKey += '-' + postfix;
+>>>>>>> mobile/main
 		//trace('songKey test: $songKey');
 		return returnSound(songKey, 'songs', modsAllowed, false);
 	}
@@ -328,9 +355,23 @@ class Paths
 			for(mod in Mods.getGlobalMods())
 				if (FileSystem.exists(mods('$mod/$modKey')))
 					return true;
+<<<<<<< HEAD
 
 			if (FileSystem.exists(mods(Mods.currentModDirectory + '/' + modKey)) || FileSystem.exists(mods(modKey)))
 				return true;
+=======
+				#if linux
+				else if (FileSystem.exists(findFile('$mod/$modKey')))
+					return true;
+				#end
+
+			if (FileSystem.exists(mods(Mods.currentModDirectory + '/' + modKey)) || FileSystem.exists(mods(modKey)))
+				return true;
+			#if linux
+			else if (FileSystem.exists(findFile(modKey)))
+				return true;
+			#end
+>>>>>>> mobile/main
 		}
 		#end
 		return (OpenFlAssets.exists(getPath(key, type, parentFolder, false)));
@@ -465,7 +506,11 @@ class Paths
 
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '')
+<<<<<<< HEAD
 		return 'mods/' + key;
+=======
+		return #if android StorageUtil.getExternalStorageDirectory() + #else Sys.getCwd() + #end 'mods/' + key;
+>>>>>>> mobile/main
 
 	inline static public function modsJson(key:String)
 		return modFolders('data/' + key + '.json');
@@ -495,6 +540,17 @@ class Paths
 			var fileToCheck:String = mods(Mods.currentModDirectory + '/' + key);
 			if(FileSystem.exists(fileToCheck))
 				return fileToCheck;
+<<<<<<< HEAD
+=======
+			#if linux
+			else
+			{
+				var newPath:String = findFile(key);
+				if (newPath != null)
+					return newPath;
+			}
+			#end
+>>>>>>> mobile/main
 		}
 
 		for(mod in Mods.getGlobalMods())
@@ -502,9 +558,74 @@ class Paths
 			var fileToCheck:String = mods(mod + '/' + key);
 			if(FileSystem.exists(fileToCheck))
 				return fileToCheck;
+<<<<<<< HEAD
 		}
 		return 'mods/' + key;
 	}
+=======
+			#if linux
+			else
+			{
+				var newPath:String = findFile(key);
+				if (newPath != null)
+					return newPath;
+			}
+			#end
+		}
+		return (#if android StorageUtil.getExternalStorageDirectory() + #else Sys.getCwd() + #end 'mods/' + key);
+	}
+
+	#if linux
+	static function findFile(key:String):String {
+		var targetParts:Array<String> = key.replace('\\', '/').split('/');
+		if (targetParts.length == 0) return null;
+
+		var baseDir:String = targetParts.shift();
+		var searchDirs:Array<String> = [
+			mods(Mods.currentModDirectory + '/' + baseDir),
+			mods(baseDir)
+		];
+
+		for (part in targetParts) {
+			if (part == '') continue;
+
+			var nextDir:String = findNodeInDirs(searchDirs, part);
+			if (nextDir == null) {
+				return null;
+			}
+
+			searchDirs = [nextDir];
+		}
+
+		return searchDirs[0];
+	}
+
+	static function findNodeInDirs(dirs:Array<String>, key:String):String {
+		for (dir in dirs) {
+			var node:String = findNode(dir, key);
+			if (node != null) {
+				return dir + '/' + node;
+			}
+		}
+		return null;
+	}
+
+	static function findNode(dir:String, key:String):String {
+		try {
+			var allFiles:Array<String> = Paths.readDirectory(dir);
+			var fileMap:Map<String, String> = new Map();
+
+			for (file in allFiles) {
+				fileMap.set(file.toLowerCase(), file);
+			}
+
+			return fileMap.get(key.toLowerCase());
+		} catch (e:Dynamic) {
+			return null;
+		}
+	}
+	#end
+>>>>>>> mobile/main
 	#end
 
 	#if flxanimate
@@ -577,4 +698,28 @@ class Paths
 		spr.loadAtlasEx(folderOrImg, spriteJson, animationJson);
 	}
 	#end
+<<<<<<< HEAD
+=======
+
+	public static function readDirectory(directory:String):Array<String>
+	{
+		#if MODS_ALLOWED
+		return FileSystem.readDirectory(directory);
+		#else
+		var dirs:Array<String> = [];
+		for(dir in Assets.list().filter(folder -> folder.startsWith(directory)))
+		{
+			@:privateAccess
+			for(library in lime.utils.Assets.libraries.keys())
+			{
+				if(library != 'default' && Assets.exists('$library:$dir') && (!dirs.contains('$library:$dir') || !dirs.contains(dir)))
+					dirs.push('$library:$dir');
+				else if(Assets.exists(dir) && !dirs.contains(dir))
+					dirs.push(dir);
+			}
+		}
+		return dirs.map(dir -> dir.substr(dir.lastIndexOf("/") + 1));
+		#end
+	}
+>>>>>>> mobile/main
 }

@@ -73,6 +73,12 @@ class MasterEditorMenu extends MusicBeatState
 		changeSelection();
 
 		FlxG.mouse.visible = false;
+<<<<<<< HEAD
+=======
+
+		addTouchPad(#if MODS_ALLOWED 'LEFT_FULL' #else 'UP_DOWN' #end, 'A_B');
+
+>>>>>>> mobile/main
 		super.create();
 	}
 
@@ -165,4 +171,8 @@ class MasterEditorMenu extends MusicBeatState
 		directoryTxt.text = directoryTxt.text.toUpperCase();
 	}
 	#end
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

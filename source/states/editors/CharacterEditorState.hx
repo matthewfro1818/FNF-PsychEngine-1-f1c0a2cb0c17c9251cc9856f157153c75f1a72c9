@@ -8,11 +8,19 @@ import flixel.util.FlxDestroyUtil;
 import openfl.net.FileReference;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
+<<<<<<< HEAD
 import openfl.utils.Assets;
 
 import objects.Character;
 import objects.CharacterFactory;
 import objects.FlareonCharacter;
+=======
+import openfl.events.MouseEvent;
+import openfl.geom.Point;
+import openfl.utils.Assets;
+
+import objects.Character;
+>>>>>>> mobile/main
 import objects.HealthIcon;
 import objects.Bar;
 
@@ -58,6 +66,12 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 
 	var selectedFormat:FlxTextFormat = new FlxTextFormat(FlxColor.LIME);
 
+<<<<<<< HEAD
+=======
+	var cameraPosition:Point = new Point();
+	var isDragging:Bool = false;
+
+>>>>>>> mobile/main
 	public function new(char:String = null, goToPlayState:Bool = true)
 	{
 		this._char = char;
@@ -128,7 +142,11 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		add(healthIcon);
 		add(animsTxt);
 
+<<<<<<< HEAD
 		var tipText:FlxText = new FlxText(FlxG.width - 300, FlxG.height - 24, 300, "Press F1 for Help", 20);
+=======
+		var tipText:FlxText = new FlxText(FlxG.width - 300, FlxG.height - 24, 300, 'Press ${(controls.mobileC) ? 'F' : 'F1'} for Help', 20);
+>>>>>>> mobile/main
 		tipText.cameras = [camHUD];
 		tipText.setFormat(null, 16, FlxColor.WHITE, RIGHT, OUTLINE_FAST, FlxColor.BLACK);
 		tipText.borderColor = FlxColor.BLACK;
@@ -163,6 +181,19 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		updateHealthBar();
 		character.finishAnimation();
 
+<<<<<<< HEAD
+=======
+		addTouchPad('LEFT_FULL', 'CHARACTER_EDITOR');
+		addTouchPadCamera();
+
+		if (controls.mobileC)
+		{
+			FlxG.stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseEvent);
+			FlxG.stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseEvent);
+			FlxG.stage.addEventListener(MouseEvent.MOUSE_UP, onMouseEvent);
+		}
+
+>>>>>>> mobile/main
 		if(ClientPrefs.data.cacheOnGPU) Paths.clearUnusedMemory();
 
 		super.create();
@@ -170,6 +201,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 
 	function addHelpScreen()
 	{
+<<<<<<< HEAD
 		var str:Array<String> = ["CAMERA",
 		"E/Q - Camera Zoom In/Out",
 		"J/K/L/I - Move Camera",
@@ -189,6 +221,43 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		"F12 - Toggle Silhouettes",
 		"Hold Shift - Move Offsets 10x faster and Camera 4x faster",
 		"Hold Control - Move camera 4x slower"];
+=======
+		var str:Array<String> = (controls.mobileC) ? [
+			"CAMERA",
+			"X/Y - Camera Zoom In/Out",
+			"G + Arrow Buttons - Move Camera",
+			"Z - Reset Camera Zoom",
+			"",
+			"CHARACTER",
+			"A - Reset Current Offset",
+			"V/D - Previous/Next Animation",
+			"Arrow Buttons - Move Offset",
+			"",
+			"OTHER",
+			"S - Toggle Silhouettes",
+			"Hold C - Move Offsets 10x faster and Camera 4x faster"
+		] : [
+			"CAMERA",
+			"E/Q - Camera Zoom In/Out",
+			"J/K/L/I - Move Camera",
+			"R - Reset Camera Zoom",
+			"",
+			"CHARACTER",
+			"Ctrl + R - Reset Current Offset",
+			"Ctrl + C - Copy Current Offset",
+			"Ctrl + V - Paste Copied Offset on Current Animation",
+			"Ctrl + Z - Undo Last Paste or Reset",
+			"W/S - Previous/Next Animation",
+			"Space - Replay Animation",
+			"Arrow Keys/Mouse & Right Click - Move Offset",
+			"A/D - Frame Advance (Back/Forward)",
+			"",
+			"OTHER",
+			"F12 - Toggle Silhouettes",
+			"Hold Shift - Move Offsets 10x faster and Camera 4x faster",
+			"Hold Control - Move camera 4x slower"
+		];
+>>>>>>> mobile/main
 
 		helpBg = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
 		helpBg.scale.set(FlxG.width, FlxG.height);
@@ -230,7 +299,11 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		}
 
 		var isPlayer = (reload ? character.isPlayer : !predictCharacterIsNotPlayer(_char));
+<<<<<<< HEAD
 		character = CharacterFactory.create(0, 0, _char, isPlayer);
+=======
+		character = new Character(0, 0, _char, isPlayer);
+>>>>>>> mobile/main
 		if(!reload && character.editorIsPlayer != null && isPlayer != character.editorIsPlayer)
 		{
 			character.isPlayer = !character.isPlayer;
@@ -673,9 +746,12 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		var saveCharacterButton:PsychUIButton = new PsychUIButton(reloadImage.x, noAntialiasingCheckBox.y + 40, "Save Character", function() {
 			saveCharacter();
 		});
+<<<<<<< HEAD
 		var makeFlareonSheetButton:PsychUIButton = new PsychUIButton(reloadImage.x, saveCharacterButton.y + 25, "Make Sheet", function() {
 			makeFlareonSpritesheet();
 		}, 110);
+=======
+>>>>>>> mobile/main
 
 		healthColorStepperR = new PsychUINumericStepper(singDurationStepper.x, saveCharacterButton.y, 20, character.healthColorArray[0], 0, 255, 0);
 		healthColorStepperG = new PsychUINumericStepper(singDurationStepper.x + 65, saveCharacterButton.y, 20, character.healthColorArray[1], 0, 255, 0);
@@ -706,6 +782,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		tab_group.add(healthColorStepperG);
 		tab_group.add(healthColorStepperB);
 		tab_group.add(saveCharacterButton);
+<<<<<<< HEAD
 		tab_group.add(makeFlareonSheetButton);
 	}
 
@@ -742,6 +819,8 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		FlxG.log.warn('The Flareon spritesheet maker needs a sys/desktop build.');
 		FlxG.sound.play(Paths.sound('cancelMenu'));
 		#end
+=======
+>>>>>>> mobile/main
 	}
 
 	public function UIEvent(id:String, sender:Dynamic) {
@@ -913,7 +992,11 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		var shiftMult:Float = 1;
 		var ctrlMult:Float = 1;
 		var shiftMultBig:Float = 1;
+<<<<<<< HEAD
 		if(FlxG.keys.pressed.SHIFT)
+=======
+		if(FlxG.keys.pressed.SHIFT || touchPad.buttonC.pressed)
+>>>>>>> mobile/main
 		{
 			shiftMult = 4;
 			shiftMultBig = 10;
@@ -927,12 +1010,21 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		if (FlxG.keys.pressed.I) FlxG.camera.scroll.y -= elapsed * 500 * shiftMult * ctrlMult;
 
 		var lastZoom = FlxG.camera.zoom;
+<<<<<<< HEAD
 		if(FlxG.keys.justPressed.R && !FlxG.keys.pressed.CONTROL) FlxG.camera.zoom = 1;
 		else if (FlxG.keys.pressed.E && FlxG.camera.zoom < 3) {
 			FlxG.camera.zoom += elapsed * FlxG.camera.zoom * shiftMult * ctrlMult;
 			if(FlxG.camera.zoom > 3) FlxG.camera.zoom = 3;
 		}
 		else if (FlxG.keys.pressed.Q && FlxG.camera.zoom > 0.1) {
+=======
+		if(FlxG.keys.justPressed.R && !FlxG.keys.pressed.CONTROL || touchPad.buttonZ.justPressed) FlxG.camera.zoom = 1;
+		else if ((FlxG.keys.pressed.E || touchPad.buttonX.pressed) && FlxG.camera.zoom < 3) {
+			FlxG.camera.zoom += elapsed * FlxG.camera.zoom * shiftMult * ctrlMult;
+			if(FlxG.camera.zoom > 3) FlxG.camera.zoom = 3;
+		}
+		else if ((FlxG.keys.pressed.Q || touchPad.buttonY.pressed) && FlxG.camera.zoom > 0.1) {
+>>>>>>> mobile/main
 			FlxG.camera.zoom -= elapsed * FlxG.camera.zoom * shiftMult * ctrlMult;
 			if(FlxG.camera.zoom < 0.1) FlxG.camera.zoom = 0.1;
 		}
@@ -943,8 +1035,13 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		var changedAnim:Bool = false;
 		if(anims.length > 1)
 		{
+<<<<<<< HEAD
 			if(FlxG.keys.justPressed.W && (changedAnim = true)) curAnim--;
 			else if(FlxG.keys.justPressed.S && (changedAnim = true)) curAnim++;
+=======
+			if((FlxG.keys.justPressed.W || touchPad.buttonV.justPressed) && (changedAnim = true)) curAnim--;
+			else if((FlxG.keys.justPressed.S || touchPad.buttonD.justPressed) && (changedAnim = true)) curAnim++;
+>>>>>>> mobile/main
 
 			if(changedAnim)
 			{
@@ -956,8 +1053,13 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		}
 
 		var changedOffset = false;
+<<<<<<< HEAD
 		var moveKeysP = [FlxG.keys.justPressed.LEFT, FlxG.keys.justPressed.RIGHT, FlxG.keys.justPressed.UP, FlxG.keys.justPressed.DOWN];
 		var moveKeys = [FlxG.keys.pressed.LEFT, FlxG.keys.pressed.RIGHT, FlxG.keys.pressed.UP, FlxG.keys.pressed.DOWN];
+=======
+		var moveKeysP = (controls.mobileC) ? [touchPad.buttonLeft.justPressed, touchPad.buttonRight.justPressed, touchPad.buttonUp.justPressed, touchPad.buttonDown.justPressed] : [FlxG.keys.justPressed.LEFT, FlxG.keys.justPressed.RIGHT, FlxG.keys.justPressed.UP, FlxG.keys.justPressed.DOWN];
+		var moveKeys =  (controls.mobileC) ? [touchPad.buttonLeft.pressed, touchPad.buttonRight.pressed, touchPad.buttonUp.pressed, touchPad.buttonDown.pressed] : [FlxG.keys.pressed.LEFT, FlxG.keys.pressed.RIGHT, FlxG.keys.pressed.UP, FlxG.keys.pressed.DOWN];
+>>>>>>> mobile/main
 		if(moveKeysP.contains(true))
 		{
 			character.offset.x += ((moveKeysP[0] ? 1 : 0) - (moveKeysP[1] ? 1 : 0)) * shiftMultBig;
@@ -1017,6 +1119,16 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 				changedOffset = true;
 			}
 		}
+<<<<<<< HEAD
+=======
+		if (touchPad.buttonA.justPressed)
+		{
+			undoOffsets = [character.offset.x, character.offset.y];
+			character.offset.x = copiedOffset[0];
+			character.offset.y = copiedOffset[1];
+			changedOffset = true;
+		}
+>>>>>>> mobile/main
 
 		var anim = anims[curAnim];
 		if(changedOffset && anim != null && anim.offsets != null)
@@ -1081,6 +1193,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		frameAdvanceText.color = clr;
 
 		// OTHER CONTROLS
+<<<<<<< HEAD
 		if(FlxG.keys.justPressed.F12)
 			silhouettes.visible = !silhouettes.visible;
 
@@ -1090,6 +1203,24 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 			helpTexts.visible = helpBg.visible;
 		}
 		else if(FlxG.keys.justPressed.ESCAPE)
+=======
+		if(FlxG.keys.justPressed.F12 || touchPad.buttonS.justPressed)
+			silhouettes.visible = !silhouettes.visible;
+
+		if((FlxG.keys.justPressed.F1 || touchPad.buttonF.justPressed) || (helpBg.visible && FlxG.keys.justPressed.ESCAPE))
+		{
+			if (controls.mobileC)
+			{
+				touchPad.forEachAlive(function(button:TouchButton){
+					if(button.tag != 'F')
+						button.visible = !button.visible;
+				});
+			}
+			helpBg.visible = !helpBg.visible;
+			helpTexts.visible = helpBg.visible;
+		}
+		else if(FlxG.keys.justPressed.ESCAPE || touchPad.buttonB.justPressed)
+>>>>>>> mobile/main
 		{
 			if(!_goToPlayState)
 			{
@@ -1263,7 +1394,11 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		characterList = Mods.mergeAllTextsNamed('data/characterList.txt');
 		var foldersToCheck:Array<String> = Mods.directoriesWithFile(Paths.getSharedPath(), 'characters/');
 		for (folder in foldersToCheck)
+<<<<<<< HEAD
 			for (file in FileSystem.readDirectory(folder))
+=======
+			for (file in Paths.readDirectory(folder))
+>>>>>>> mobile/main
 				if(file.toLowerCase().endsWith('.json'))
 				{
 					var charToCheck:String = file.substr(0, file.length - 5);
@@ -1345,11 +1480,45 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 
 		if (data.length > 0)
 		{
+<<<<<<< HEAD
+=======
+			#if mobile
+			unsavedProgress = false;
+			StorageUtil.saveContent('$_char.json', data);
+			#else
+>>>>>>> mobile/main
 			_file = new FileReference();
 			_file.addEventListener(#if desktop Event.SELECT #else Event.COMPLETE #end, onSaveComplete);
 			_file.addEventListener(Event.CANCEL, onSaveCancel);
 			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 			_file.save(data, '$_char.json');
+<<<<<<< HEAD
 		}
 	}
+=======
+			#end
+		}
+	}
+
+	function onMouseEvent(e:MouseEvent):Void
+	{
+		if (touchPad != null && !touchPad.anyPressed([ANY]))
+			switch (e.type)
+			{
+				case MouseEvent.MOUSE_DOWN:
+					var mouse = new Point(e.stageX, e.stageY); // OpenFL mouse position
+					cameraPosition.x = FlxG.camera.scroll.x + mouse.x;
+					cameraPosition.y = FlxG.camera.scroll.y + mouse.y;
+					isDragging = true;
+
+				case MouseEvent.MOUSE_MOVE if (isDragging):
+					var mouse = new Point(e.stageX, e.stageY);
+					FlxG.camera.scroll.x = cameraPosition.x - mouse.x;
+					FlxG.camera.scroll.y = cameraPosition.y - mouse.y;
+
+				case MouseEvent.MOUSE_UP:
+					isDragging = false;
+			}
+	}
+>>>>>>> mobile/main
 }

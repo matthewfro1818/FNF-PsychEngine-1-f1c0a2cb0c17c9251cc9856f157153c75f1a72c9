@@ -25,7 +25,11 @@ class LanguageSubState extends MusicBeatSubstate
 		var directories:Array<String> = Mods.directoriesWithFile(Paths.getSharedPath(), 'data/');
 		for (directory in directories)
 		{
+<<<<<<< HEAD
 			for (file in FileSystem.readDirectory(directory))
+=======
+			for (file in Paths.readDirectory(directory))
+>>>>>>> mobile/main
 			{
 				if(file.toLowerCase().endsWith('.lang'))
 				{
@@ -92,6 +96,11 @@ class LanguageSubState extends MusicBeatSubstate
 			grpLanguages.add(text);
 		}
 		changeSelected();
+<<<<<<< HEAD
+=======
+
+		addTouchPad('LEFT_FULL', 'A_B');
+>>>>>>> mobile/main
 	}
 
 	var changedLanguage:Bool = false;
@@ -142,4 +151,8 @@ class LanguageSubState extends MusicBeatSubstate
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.6);
 	}
 	#end
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

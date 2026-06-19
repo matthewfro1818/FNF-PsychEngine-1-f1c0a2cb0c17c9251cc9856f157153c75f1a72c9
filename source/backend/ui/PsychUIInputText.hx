@@ -376,7 +376,14 @@ class PsychUIInputText extends FlxSpriteGroup
 	}
 
 	public dynamic function onPressEnter(e:KeyboardEvent)
+<<<<<<< HEAD
 		focusOn = null;
+=======
+	{
+		FlxG.stage.window.textInputEnabled = false;
+		focusOn = null;
+	}
+>>>>>>> mobile/main
 
 	public var unfocus:Void->Void;
 	public static function set_focusOn(v:PsychUIInputText)
@@ -400,6 +407,10 @@ class PsychUIInputText extends FlxSpriteGroup
 				if(!FlxG.keys.pressed.SHIFT) selectIndex = -1;
 				else if(selectIndex == -1) selectIndex = caretIndex;
 				focusOn = this;
+<<<<<<< HEAD
+=======
+				FlxG.stage.window.textInputEnabled = true;
+>>>>>>> mobile/main
 				caretIndex = 0;
 				var lastBound:Float = 0;
 				var textObjX:Float = textObj.getScreenPosition(camera).x;
@@ -735,4 +746,8 @@ class PsychUIInputText extends FlxSpriteGroup
 		}
 		return text;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

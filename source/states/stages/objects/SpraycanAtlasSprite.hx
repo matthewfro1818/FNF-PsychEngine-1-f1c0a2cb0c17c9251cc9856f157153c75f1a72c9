@@ -85,4 +85,8 @@ class SpraycanAtlasSprite extends FlxSpriteGroup
 		canAtlas.anim.play(name, true);
 		playingAnim = name;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

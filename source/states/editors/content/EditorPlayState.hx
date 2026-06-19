@@ -133,13 +133,25 @@ class EditorPlayState extends MusicBeatSubstate
 		dataTxt.borderSize = 1.25;
 		add(dataTxt);
 
+<<<<<<< HEAD
 		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Press ESC to Go Back to Chart Editor', 16);
+=======
+		var tipText:FlxText = new FlxText(10, FlxG.height - 24, 0, 'Press ${(controls.mobileC) ? #if android 'BACK' #else 'X' #end : 'ESC'} to Go Back to Chart Editor', 16);
+>>>>>>> mobile/main
 		tipText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		tipText.borderSize = 2;
 		tipText.scrollFactor.set();
 		add(tipText);
 		FlxG.mouse.visible = false;
 		
+<<<<<<< HEAD
+=======
+		addMobileControls();
+		mobileControls.instance.visible = true;
+		mobileControls.onButtonDown.add(onButtonPress);
+		mobileControls.onButtonUp.add(onButtonRelease);
+
+>>>>>>> mobile/main
 		generateSong();
 		_noteList = null;
 
@@ -153,6 +165,14 @@ class EditorPlayState extends MusicBeatSubstate
 		updateScore();
 		cachePopUpScore();
 
+<<<<<<< HEAD
+=======
+		#if !android
+		addTouchPad('NONE', 'P');
+		addTouchPadCamera();
+		#end
+
+>>>>>>> mobile/main
 		super.create();
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
@@ -160,7 +180,11 @@ class EditorPlayState extends MusicBeatSubstate
 
 	override function update(elapsed:Float)
 	{
+<<<<<<< HEAD
 		if(controls.BACK || FlxG.keys.justPressed.ESCAPE || FlxG.keys.justPressed.F12)
+=======
+		if(#if android FlxG.android.justReleased.BACK #else touchPad.buttonP.justPressed #end || controls.BACK || FlxG.keys.justPressed.ESCAPE || FlxG.keys.justPressed.F12)
+>>>>>>> mobile/main
 		{
 			endSong();
 			super.update(elapsed);
@@ -502,6 +526,12 @@ class EditorPlayState extends MusicBeatSubstate
 			finishTimer.destroy();
 
 		Conductor.songPosition = FlxG.sound.music.time = vocals.time = opponentVocals.time = startPos - Conductor.offset;
+<<<<<<< HEAD
+=======
+
+		mobileControls.instance.visible = false;
+
+>>>>>>> mobile/main
 		close();
 	}
 	
@@ -559,6 +589,10 @@ class EditorPlayState extends MusicBeatSubstate
 			antialias = !PlayState.isPixelStage;
 		}
 
+<<<<<<< HEAD
+=======
+		if(ClientPrefs.data.popUpRating) {
+>>>>>>> mobile/main
 		rating.loadGraphic(Paths.image(uiFolder + daRating.image + PlayState.uiPostfix));
 		rating.screenCenter();
 		rating.x = placement - 40;
@@ -649,6 +683,10 @@ class EditorPlayState extends MusicBeatSubstate
 			},
 			startDelay: Conductor.crochet * 0.002 / playbackRate
 		});
+<<<<<<< HEAD
+=======
+		}
+>>>>>>> mobile/main
 	}
 
 	private function onKeyPress(event:KeyboardEvent):Void
@@ -736,6 +774,27 @@ class EditorPlayState extends MusicBeatSubstate
 			spr.resetAnim = 0;
 		}
 	}
+<<<<<<< HEAD
+=======
+
+	private function onButtonPress(button:TouchButton):Void
+	{
+		if (button.IDs.filter(id -> id.toString().startsWith("EXTRA")).length > 0)
+			return;
+
+		var buttonCode:Int = (button.IDs[0].toString().startsWith('NOTE')) ? button.IDs[0] : button.IDs[1];
+		if (button.justPressed) keyPressed(buttonCode);
+	}
+
+	private function onButtonRelease(button:TouchButton):Void
+	{
+		if (button.IDs.filter(id -> id.toString().startsWith("EXTRA")).length > 0)
+			return;
+
+		var buttonCode:Int = (button.IDs[0].toString().startsWith('NOTE')) ? button.IDs[0] : button.IDs[1];
+		if(buttonCode > -1) keyReleased(buttonCode);
+	}
+>>>>>>> mobile/main
 	
 	// Hold notes
 	private function keysCheck():Void
@@ -880,7 +939,11 @@ class EditorPlayState extends MusicBeatSubstate
 	}
 
 	public function invalidateNote(note:Note):Void {
+<<<<<<< HEAD
 		note.kill();
+=======
+		//if (!ClientPrefs.data.lowQuality) note.kill();
+>>>>>>> mobile/main
 		notes.remove(note, true);
 		note.destroy();
 	}

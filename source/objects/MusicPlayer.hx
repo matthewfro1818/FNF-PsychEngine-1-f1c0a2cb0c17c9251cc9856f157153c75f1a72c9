@@ -180,7 +180,11 @@ class MusicPlayer extends FlxGroup
 			}
 		}
 	
+<<<<<<< HEAD
 		if (controls.RESET)
+=======
+		if (instance.touchPad.buttonC.justPressed || controls.RESET)
+>>>>>>> mobile/main
 		{
 			playbackRate = 1;
 			setPlaybackRate();
@@ -259,7 +263,15 @@ class MusicPlayer extends FlxGroup
 
 		if (playingMusic)
 		{
+<<<<<<< HEAD
 			instance.bottomText.text = Language.getPhrase('musicplayer_tip', 'Press SPACE to Pause / Press ESCAPE to Exit / Press R to Reset the Song');
+=======
+			final space:String = (instance.controls.mobileC) ? "X" : "SPACE";
+			final escape:String = (instance.controls.mobileC) ? "B" : "ESCAPE";
+			final reset:String = (instance.controls.mobileC) ? "C" : "R";
+
+			instance.bottomText.text = Language.getPhrase('musicplayer_tip', 'Press {1} to Pause / Press {2} to Exit / Press {3} to Reset the Song', [space, escape, reset]);
+>>>>>>> mobile/main
 			positionSong();
 			
 			progressBar.setRange(0, FlxG.sound.music.length);
@@ -368,4 +380,8 @@ class MusicPlayer extends FlxGroup
 		else if (value <= 0.25) value = 0.25;
 		return playbackRate = value;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

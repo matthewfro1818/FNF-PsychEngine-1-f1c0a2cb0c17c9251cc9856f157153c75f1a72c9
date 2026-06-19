@@ -112,9 +112,18 @@ class PreloadListSubState extends MusicBeatSubstate implements PsychUIEvent
 		function addToList(path:Path, isFolder:Bool)
 		{
 			var exePath:String = Sys.getCwd().replace('\\', '/');
+<<<<<<< HEAD
 			if(path.dir.startsWith(exePath))
 			{
 				var pathStr:String = path.dir.substr(exePath.length);
+=======
+			#if android
+			var externalPath = StorageUtil.getExternalStorageDirectory();
+			#end
+			if(path.dir.startsWith(exePath) #if android || path.dir.startsWith(externalPath) #end)
+			{
+				var pathStr:String = #if android path.dir.startsWith(externalPath) ? path.dir.substr(externalPath.length) : path.dir.substr(exePath.length) #else path.dir.substr(exePath.length) #end;
+>>>>>>> mobile/main
 				var split:Array<String> = pathStr.split('/');
 				switch(split[0])
 				{
@@ -149,6 +158,10 @@ class PreloadListSubState extends MusicBeatSubstate implements PsychUIEvent
 			else showOutput('File is not inside Psych Engine\'s folder!', true);
 		}
 
+<<<<<<< HEAD
+=======
+		#if !mobile
+>>>>>>> mobile/main
 		var loadFileBtn:PsychUIButton = new PsychUIButton(0, bg.y + bg.height - 40, 'Load File', function()
 		{
 			if(!fileDialog.completed) return;
@@ -186,6 +199,10 @@ class PreloadListSubState extends MusicBeatSubstate implements PsychUIEvent
 		loadFolderBtn.screenCenter(X);
 		loadFolderBtn.cameras = cameras;
 		add(loadFolderBtn);
+<<<<<<< HEAD
+=======
+		#end
+>>>>>>> mobile/main
 
 		var saveBtn:PsychUIButton = new PsychUIButton(0, bg.y + bg.height - 40, 'Save', function()
 		{
@@ -196,7 +213,13 @@ class PreloadListSubState extends MusicBeatSubstate implements PsychUIEvent
 		});
 		saveBtn.screenCenter(X);
 		saveBtn.cameras = cameras;
+<<<<<<< HEAD
 		saveBtn.x += 120;
+=======
+		#if !mobile
+		saveBtn.x += 120;
+		#end
+>>>>>>> mobile/main
 		saveBtn.normalStyle.bgColor = FlxColor.GREEN;
 		saveBtn.normalStyle.textColor = FlxColor.WHITE;
 		add(saveBtn);

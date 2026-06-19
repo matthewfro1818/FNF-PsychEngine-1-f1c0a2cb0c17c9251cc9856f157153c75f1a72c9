@@ -121,13 +121,27 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		option.decimals = 1;
 		addOption(option);
 		
+<<<<<<< HEAD
 		#if !mobile
+=======
+>>>>>>> mobile/main
 		var option:Option = new Option('FPS Counter',
 			'If unchecked, hides FPS Counter.',
 			'showFPS',
 			BOOL);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
+<<<<<<< HEAD
+=======
+
+		#if native
+		var option:Option = new Option('VSync',
+			'If checked, Enables VSync fixing any screen tearing at the cost of capping the FPS to screen refresh rate.\n(Must restart the game to have an effect)',
+			'vsync',
+			BOOL);
+		option.onChange = onChangeVSync;
+		addOption(option);
+>>>>>>> mobile/main
 		#end
 		
 		var option:Option = new Option('Pause Music:',
@@ -287,11 +301,21 @@ class VisualsSettingsSubState extends BaseOptionsMenu
 		super.destroy();
 	}
 
+<<<<<<< HEAD
 	#if !mobile
+=======
+>>>>>>> mobile/main
 	function onChangeFPSCounter()
 	{
 		if(Main.fpsVar != null)
 			Main.fpsVar.visible = ClientPrefs.data.showFPS;
 	}
+<<<<<<< HEAD
+=======
+
+	#if native
+	function onChangeVSync()
+		lime.app.Application.current.window.vsync = ClientPrefs.data.vsync;
+>>>>>>> mobile/main
 	#end
 }

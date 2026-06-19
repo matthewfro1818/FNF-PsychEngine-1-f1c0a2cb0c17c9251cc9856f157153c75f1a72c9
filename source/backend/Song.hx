@@ -4,9 +4,12 @@ import haxe.Json;
 import lime.utils.Assets;
 
 import objects.Note;
+<<<<<<< HEAD
 import states.editors.content.VSlice;
 import states.editors.content.VSlice.VSliceChart;
 import states.editors.content.VSlice.VSliceMetadata;
+=======
+>>>>>>> mobile/main
 
 typedef SwagSong =
 {
@@ -33,12 +36,15 @@ typedef SwagSong =
 
 	@:optional var arrowSkin:String;
 	@:optional var splashSkin:String;
+<<<<<<< HEAD
 
 	// Raw Codename payload retained for HScript compatibility.
 	@:optional var codenameChart:Bool;
 	@:optional var meta:Dynamic;
 	@:optional var strumLines:Array<Dynamic>;
 	@:optional var noteTypes:Array<String>;
+=======
+>>>>>>> mobile/main
 }
 
 typedef SwagSection =
@@ -84,6 +90,7 @@ class Song
 		if(songJson.events == null)
 		{
 			songJson.events = [];
+<<<<<<< HEAD
 			if(Reflect.hasField(songJson, 'customEvents'))
 			{
 				var customEvents:Array<Dynamic> = cast Reflect.field(songJson, 'customEvents');
@@ -99,6 +106,8 @@ class Song
 					songJson.events.push([event.time, [[eventName, params[0], params[1]]]]);
 				}
 			}
+=======
+>>>>>>> mobile/main
 			for (secNum in 0...songJson.notes.length)
 			{
 				var sec:SwagSection = songJson.notes[secNum];
@@ -172,6 +181,7 @@ class Song
 		#if MODS_ALLOWED
 		if(FileSystem.exists(_lastPath))
 			rawData = File.getContent(_lastPath);
+<<<<<<< HEAD
 		else if(Assets.exists(_lastPath))
 			rawData = Assets.getText(_lastPath);
 		#else
@@ -251,6 +261,13 @@ class Song
 		}
 		#end
 		return null;
+=======
+		else
+		#end
+			rawData = Assets.getText(_lastPath);
+
+		return rawData != null ? parseJSON(rawData, jsonInput) : null;
+>>>>>>> mobile/main
 	}
 
 	public static function parseJSON(rawData:String, ?nameForError:String = null, ?convertTo:String = 'psych_v1'):SwagSong

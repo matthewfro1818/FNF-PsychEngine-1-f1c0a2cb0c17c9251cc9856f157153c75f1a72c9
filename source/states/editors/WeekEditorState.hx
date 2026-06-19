@@ -99,6 +99,11 @@ class WeekEditorState extends MusicBeatState implements PsychUIEventHandler.Psyc
 
 		FlxG.mouse.visible = true;
 
+<<<<<<< HEAD
+=======
+		addTouchPad('UP_DOWN', 'B');
+
+>>>>>>> mobile/main
 		super.create();
 	}
 
@@ -115,13 +120,25 @@ class WeekEditorState extends MusicBeatState implements PsychUIEventHandler.Psyc
 		UI_box.selectedName = 'Week';
 		add(UI_box);
 
+<<<<<<< HEAD
+=======
+		#if !mobile
+>>>>>>> mobile/main
 		var loadWeekButton:PsychUIButton = new PsychUIButton(0, 650, "Load Week", function() loadWeek());
 		loadWeekButton.screenCenter(X);
 		loadWeekButton.x -= 120;
 		add(loadWeekButton);
+<<<<<<< HEAD
 		
 		var freeplayButton:PsychUIButton = new PsychUIButton(0, 650, "Freeplay", function() MusicBeatState.switchState(new WeekEditorFreeplayState(weekFile)));
 		freeplayButton.screenCenter(X);
+=======
+		#end
+		
+		var freeplayButton:PsychUIButton = new PsychUIButton(0, 650, "Freeplay", function() MusicBeatState.switchState(new WeekEditorFreeplayState(weekFile)));
+		freeplayButton.screenCenter(X);
+		#if mobile freeplayButton.x -= 120; #end
+>>>>>>> mobile/main
 		add(freeplayButton);
 	
 		var saveWeekButton:PsychUIButton = new PsychUIButton(0, 650, "Save Week", function() saveWeek(weekFile));
@@ -398,7 +415,11 @@ class WeekEditorState extends MusicBeatState implements PsychUIEventHandler.Psyc
 		if(PsychUIInputText.focusOn == null)
 		{
 			ClientPrefs.toggleVolumeKeys(true);
+<<<<<<< HEAD
 			if(FlxG.keys.justPressed.ESCAPE)
+=======
+			if(FlxG.keys.justPressed.ESCAPE || touchPad.buttonB.justPressed)
+>>>>>>> mobile/main
 			{
 				if(!unsavedProgress)
 				{
@@ -497,11 +518,22 @@ class WeekEditorState extends MusicBeatState implements PsychUIEventHandler.Psyc
 		var data:String = haxe.Json.stringify(weekFile, "\t");
 		if (data.length > 0)
 		{
+<<<<<<< HEAD
+=======
+			#if mobile
+			unsavedProgress = false;
+			StorageUtil.saveContent('$weekFileName.json', data);
+			#else
+>>>>>>> mobile/main
 			_file = new FileReference();
 			_file.addEventListener(#if desktop Event.SELECT #else Event.COMPLETE #end, onSaveComplete);
 			_file.addEventListener(Event.CANCEL, onSaveCancel);
 			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 			_file.save(data, weekFileName + ".json");
+<<<<<<< HEAD
+=======
+			#end
+>>>>>>> mobile/main
 		}
 	}
 	
@@ -588,6 +620,10 @@ class WeekEditorFreeplayState extends MusicBeatState implements PsychUIEventHand
 
 		addEditorBox();
 		changeSelection();
+<<<<<<< HEAD
+=======
+		addTouchPad('UP_DOWN', 'B');
+>>>>>>> mobile/main
 		super.create();
 	}
 	
@@ -607,18 +643,30 @@ class WeekEditorFreeplayState extends MusicBeatState implements PsychUIEventHand
 		blackBlack.alpha = 0.6;
 		add(blackBlack);
 
+<<<<<<< HEAD
+=======
+		#if !mobile
+>>>>>>> mobile/main
 		var loadWeekButton:PsychUIButton = new PsychUIButton(0, 685, "Load Week", function() {
 			WeekEditorState.loadWeek();
 		});
 		loadWeekButton.screenCenter(X);
 		loadWeekButton.x -= 120;
 		add(loadWeekButton);
+<<<<<<< HEAD
+=======
+		#end
+>>>>>>> mobile/main
 		
 		var storyModeButton:PsychUIButton = new PsychUIButton(0, 685, "Story Mode", function() {
 			MusicBeatState.switchState(new WeekEditorState(weekFile));
 			
 		});
 		storyModeButton.screenCenter(X);
+<<<<<<< HEAD
+=======
+		#if mobile storyModeButton.x -= 120; #end
+>>>>>>> mobile/main
 		add(storyModeButton);
 	
 		var saveWeekButton:PsychUIButton = new PsychUIButton(0, 685, "Save Week", function() {
@@ -755,7 +803,11 @@ class WeekEditorFreeplayState extends MusicBeatState implements PsychUIEventHand
 		else
 		{
 			ClientPrefs.toggleVolumeKeys(true);
+<<<<<<< HEAD
 			if(FlxG.keys.justPressed.ESCAPE) {
+=======
+			if(FlxG.keys.justPressed.ESCAPE || touchPad.buttonB.justPressed) {
+>>>>>>> mobile/main
 				if(!WeekEditorState.unsavedProgress)
 				{
 					MusicBeatState.switchState(new MasterEditorMenu());

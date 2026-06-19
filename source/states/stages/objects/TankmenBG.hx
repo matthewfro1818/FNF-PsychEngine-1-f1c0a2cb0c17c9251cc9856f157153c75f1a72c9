@@ -68,4 +68,8 @@ class TankmenBG extends FlxSprite
 			}
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

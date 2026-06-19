@@ -41,7 +41,13 @@ class ControlsSubState extends MusicBeatSubstate
 		[false],
 		[false, 'DEBUG'],
 		[false, 'Key 1', 'debug_1', 'Debug Key #1'],
+<<<<<<< HEAD
 		[false, 'Key 2', 'debug_2', 'Debug Key #2']
+=======
+		[false, 'Key 2', 'debug_2', 'Debug Key #2'],
+		[false, 'WINDOW'],
+		[false, 'Fullscreen', 'fullscreen', 'Fullscreen Toggel']
+>>>>>>> mobile/main
 	];
 	var curOptions:Array<Int>;
 	var curOptionsValid:Array<Int>;
@@ -62,6 +68,11 @@ class ControlsSubState extends MusicBeatSubstate
 	
 	public function new()
 	{
+<<<<<<< HEAD
+=======
+		controls.isInSubstate = true;
+
+>>>>>>> mobile/main
 		super();
 
 		#if DISCORD_ALLOWED
@@ -110,6 +121,11 @@ class ControlsSubState extends MusicBeatSubstate
 		add(text);
 
 		createTexts();
+<<<<<<< HEAD
+=======
+		
+		addTouchPad('NONE', 'B');
+>>>>>>> mobile/main
 	}
 
 	var lastID:Int = 0;
@@ -280,8 +296,14 @@ class ControlsSubState extends MusicBeatSubstate
 
 		if(!binding)
 		{
+<<<<<<< HEAD
 			if(FlxG.keys.justPressed.ESCAPE || FlxG.gamepads.anyJustPressed(B))
 			{
+=======
+			if(touchPad.buttonB.justPressed || FlxG.keys.justPressed.ESCAPE || FlxG.gamepads.anyJustPressed(B))
+			{
+				controls.isInSubstate = false;
+>>>>>>> mobile/main
 				close();
 				return;
 			}
@@ -307,8 +329,16 @@ class ControlsSubState extends MusicBeatSubstate
 					bindingText = new Alphabet(FlxG.width / 2, 160, Language.getPhrase('controls_rebinding', 'Rebinding {1}', [options[curOptions[curSelected]][3]]), false);
 					bindingText.alignment = CENTERED;
 					add(bindingText);
+<<<<<<< HEAD
 					
 					bindingText2 = new Alphabet(FlxG.width / 2, 340, Language.getPhrase('controls_rebinding2', 'Hold ESC to Cancel\nHold Backspace to Delete'), true);
+=======
+
+					final escape:String = (controls.mobileC) ? "B" : "ESC";
+					final backspace:String = (controls.mobileC) ? "C" : "Backspace";
+					
+					bindingText2 = new Alphabet(FlxG.width / 2, 340, Language.getPhrase('controls_rebinding2', 'Hold {1} to Cancel\nHold {2} to Delete', [escape, backspace]), true);
+>>>>>>> mobile/main
 					bindingText2.alignment = CENTERED;
 					add(bindingText2);
 
@@ -521,4 +551,8 @@ class ControlsSubState extends MusicBeatSubstate
 		selectSpr.sprTracker = grpBlacks.members[Math.floor(curSelected * 2) + (curAlt ? 1 : 0)];
 		selectSpr.visible = (selectSpr.sprTracker != null);
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

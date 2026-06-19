@@ -281,4 +281,8 @@ class ShaderFunctions
 		return cast (target.shader, FlxRuntimeShader);
 	}
 	#end
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

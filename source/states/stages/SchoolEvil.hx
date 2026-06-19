@@ -166,4 +166,8 @@ class SchoolEvil extends BaseStage
 			}
 		});
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

@@ -63,4 +63,8 @@ class MallEvil extends BaseStage
 			});
 		});
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

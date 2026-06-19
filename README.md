@@ -6,6 +6,10 @@ Engine originally used on [Mind Games Mod](https://gamebanana.com/mods/301107), 
 
 Refer to [the Build Instructions](/docs/BUILDING.md)
 
+![PsychionalEngineLogo](docs/img/PsychEngineMobileLogoTweak.png)
+
+Engine originally used on [Mind Games Mod](https://gamebanana.com/mods/301107), intended to be a fix for the vanilla version's many issues while keeping the casual play aspect of it. Also aiming to be an easier alternative to newbie coders.
+
 ## Customization:
 
 If you wish to disable things like *Lua Scripts* or *Video Cutscenes*, you can refer to the `Project.xml` file.
@@ -21,11 +25,23 @@ For this you can head over to [the wiki](https://shadowmario.github.io/psychengi
 
 There you can learn how to use the 212 PlayState funcions in your mod!
 
+<<<<<<< HEAD
+=======
+## Mobile Credits:
+* Homura - Head Porter of Psych Engine Mobile.
+* Karim - Second Porter of Psych Engine Mobile.
+* Moxie - Helper of Psych Engine Mobile.
+
+>>>>>>> mobile/main
 ## Credits:
 * Shadow Mario - Main Programmer and Head of Psych Engine.
 * Riveren - Main Artist/Animator of Psych Engine.
 
+<<<<<<< HEAD
 ### Special Thanks
+=======
+### Psych Special Thanks
+>>>>>>> mobile/main
 * bbpanzu - Ex-Team Member (Programmer).
 * crowplexus - HScript Iris, Input System v3, and Other PRs.
 * Kamizeta - Creator of Pessy, Psych Engine's mascot.

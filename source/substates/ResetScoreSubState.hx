@@ -26,6 +26,11 @@ class ResetScoreSubState extends MusicBeatSubstate
 		this.difficulty = difficulty;
 		this.week = week;
 
+<<<<<<< HEAD
+=======
+                controls.isInSubstate = true;
+
+>>>>>>> mobile/main
 		super();
 
 		var name:String = song;
@@ -72,6 +77,12 @@ class ResetScoreSubState extends MusicBeatSubstate
 		
 		for(letter in yesText.letters) letter.color = FlxColor.RED;
 		updateOptions();
+<<<<<<< HEAD
+=======
+
+		addTouchPad('LEFT_RIGHT', 'A_B');
+		addTouchPadCamera();
+>>>>>>> mobile/main
 	}
 
 	override function update(elapsed:Float)
@@ -92,7 +103,13 @@ class ResetScoreSubState extends MusicBeatSubstate
 		}
 		if(controls.BACK) {
 			FlxG.sound.play(Paths.sound('cancelMenu'), 1);
+<<<<<<< HEAD
 			close();
+=======
+			ClientPrefs.saveSettings();
+			close();
+			controls.isInSubstate = false;
+>>>>>>> mobile/main
 		} else if(controls.ACCEPT) {
 			if(onYes) {
 				if(week == -1) {
@@ -102,8 +119,19 @@ class ResetScoreSubState extends MusicBeatSubstate
 				}
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'), 1);
+<<<<<<< HEAD
 			close();
 		}
+=======
+			ClientPrefs.saveSettings();
+			controls.isInSubstate = false;
+			close();
+		}
+		if (touchPad == null){ //sometimes it dosent add the tpad, hopefully this fixes it
+		addTouchPad('LEFT_RIGHT', 'A_B');
+		addTouchPadCamera();
+		}
+>>>>>>> mobile/main
 		super.update(elapsed);
 	}
 
@@ -118,4 +146,18 @@ class ResetScoreSubState extends MusicBeatSubstate
 		noText.scale.set(scales[1 - confirmInt], scales[1 - confirmInt]);
 		if(week == -1) icon.animation.curAnim.curFrame = confirmInt;
 	}
+<<<<<<< HEAD
 }
+=======
+
+	override function destroy(){
+		bg = FlxDestroyUtil.destroy(bg);
+		alphabetArray = FlxDestroyUtil.destroyArray(alphabetArray);
+		icon = FlxDestroyUtil.destroy(icon);
+                yesText = FlxDestroyUtil.destroy(yesText);
+		noText = FlxDestroyUtil.destroy(noText);
+
+		super.destroy();
+	}
+}
+>>>>>>> mobile/main

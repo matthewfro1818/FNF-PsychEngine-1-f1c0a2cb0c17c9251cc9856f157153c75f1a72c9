@@ -66,11 +66,21 @@ class FreeplayState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
+<<<<<<< HEAD
+=======
+		final accept:String = (controls.mobileC) ? "A" : "ACCEPT";
+		final reject:String = (controls.mobileC) ? "B" : "BACK";
+
+>>>>>>> mobile/main
 		if(WeekData.weeksList.length < 1)
 		{
 			FlxTransitionableState.skipNextTransIn = true;
 			persistentUpdate = false;
+<<<<<<< HEAD
 			MusicBeatState.switchState(new states.ErrorState("NO WEEKS ADDED FOR FREEPLAY\n\nPress ACCEPT to go to the Week Editor Menu.\nPress BACK to return to Main Menu.",
+=======
+			MusicBeatState.switchState(new states.ErrorState("NO WEEKS ADDED FOR FREEPLAY\n\nPress " + accept + " to go to the Week Editor Menu.\nPress " + reject + " to return to Main Menu.",
+>>>>>>> mobile/main
 				function() MusicBeatState.switchState(new states.editors.WeekEditorState()),
 				function() MusicBeatState.switchState(new states.MainMenuState())));
 			return;
@@ -175,7 +185,15 @@ class FreeplayState extends MusicBeatState
 		bottomBG.alpha = 0.6;
 		add(bottomBG);
 
+<<<<<<< HEAD
 		var leText:String = Language.getPhrase("freeplay_tip", "Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu / Press RESET to Reset your Score and Accuracy.");
+=======
+		final space:String = (controls.mobileC) ? "X" : "SPACE";
+		final control:String = (controls.mobileC) ? "C" : "CTRL";
+		final reset:String = (controls.mobileC) ? "Y" : "RESET";
+		
+		var leText:String = Language.getPhrase("freeplay_tip", "Press {1} to listen to the Song / Press {2} to open the Gameplay Changers Menu / Press {3} to Reset your Score and Accuracy.", [space, control, reset]);
+>>>>>>> mobile/main
 		bottomString = leText;
 		var size:Int = 16;
 		bottomText = new FlxText(bottomBG.x, bottomBG.y + 4, FlxG.width, leText, size);
@@ -188,6 +206,11 @@ class FreeplayState extends MusicBeatState
 		
 		changeSelection();
 		updateTexts();
+<<<<<<< HEAD
+=======
+
+		addTouchPad('LEFT_FULL', 'A_B_C_X_Y_Z');
+>>>>>>> mobile/main
 		super.create();
 	}
 
@@ -196,6 +219,11 @@ class FreeplayState extends MusicBeatState
 		changeSelection(0, false);
 		persistentUpdate = true;
 		super.closeSubState();
+<<<<<<< HEAD
+=======
+		removeTouchPad();
+		addTouchPad('LEFT_FULL', 'A_B_C_X_Y_Z');
+>>>>>>> mobile/main
 	}
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, color:Int)
@@ -239,7 +267,11 @@ class FreeplayState extends MusicBeatState
 			ratingSplit[1] += '0';
 
 		var shiftMult:Int = 1;
+<<<<<<< HEAD
 		if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
+=======
+		if((FlxG.keys.pressed.SHIFT || touchPad.buttonZ.pressed) && !player.playingMusic) shiftMult = 3;
+>>>>>>> mobile/main
 
 		if (!player.playingMusic)
 		{
@@ -323,12 +355,22 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
+<<<<<<< HEAD
 		if(FlxG.keys.justPressed.CONTROL && !player.playingMusic)
 		{
 			persistentUpdate = false;
 			openSubState(new GameplayChangersSubstate());
 		}
 		else if(FlxG.keys.justPressed.SPACE)
+=======
+		if((FlxG.keys.justPressed.CONTROL || touchPad.buttonC.justPressed) && !player.playingMusic)
+		{
+			persistentUpdate = false;
+			openSubState(new GameplayChangersSubstate());
+			removeTouchPad();
+		}
+		else if(FlxG.keys.justPressed.SPACE || touchPad.buttonX.justPressed)
+>>>>>>> mobile/main
 		{
 			if(instPlaying != curSelected && !player.playingMusic)
 			{
@@ -452,10 +494,18 @@ class FreeplayState extends MusicBeatState
 			DiscordClient.loadModRPC();
 			#end
 		}
+<<<<<<< HEAD
 		else if(controls.RESET && !player.playingMusic)
 		{
 			persistentUpdate = false;
 			openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
+=======
+		else if((controls.RESET || touchPad.buttonY.justPressed) && !player.playingMusic)
+		{
+			persistentUpdate = false;
+			openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
+			removeTouchPad();
+>>>>>>> mobile/main
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
 
@@ -625,4 +675,8 @@ class SongMetadata
 		this.folder = Mods.currentModDirectory;
 		if(this.folder == null) this.folder = '';
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

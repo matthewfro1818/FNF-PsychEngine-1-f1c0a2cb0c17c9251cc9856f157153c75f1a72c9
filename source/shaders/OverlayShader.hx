@@ -1,7 +1,10 @@
 package shaders;
 
+<<<<<<< HEAD
 import flixel.system.FlxAssets.FlxShader;
 
+=======
+>>>>>>> mobile/main
 class OverlayShader extends FlxShader
 {
 	@:glFragmentSource('

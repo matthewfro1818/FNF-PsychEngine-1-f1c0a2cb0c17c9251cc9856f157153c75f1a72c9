@@ -9,6 +9,10 @@ import flixel.math.FlxPoint;
 
 import states.StoryMenuState;
 import states.FreeplayState;
+<<<<<<< HEAD
+=======
+import lime.ui.Haptic;
+>>>>>>> mobile/main
 
 class GameOverSubstate extends MusicBeatSubstate
 {
@@ -59,6 +63,12 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		instance = this;
 
+<<<<<<< HEAD
+=======
+		if (ClientPrefs.data.gameOverVibration)
+			Haptic.vibrate(0, 500);
+
+>>>>>>> mobile/main
 		Conductor.songPosition = 0;
 
 		if(boyfriend == null)
@@ -129,6 +139,12 @@ class GameOverSubstate extends MusicBeatSubstate
 			}
 		}
 
+<<<<<<< HEAD
+=======
+		addTouchPad('NONE', 'A_B');
+		addTouchPadCamera();
+
+>>>>>>> mobile/main
 		super.create();
 	}
 

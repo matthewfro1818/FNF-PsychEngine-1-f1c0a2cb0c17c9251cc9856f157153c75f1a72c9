@@ -103,4 +103,8 @@ class Language
 		});
 	}
 	#end
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

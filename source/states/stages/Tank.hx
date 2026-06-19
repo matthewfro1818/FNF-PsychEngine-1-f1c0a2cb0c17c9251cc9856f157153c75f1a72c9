@@ -416,4 +416,8 @@ class Tank extends BaseStage
 			});
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

@@ -75,6 +75,7 @@ class Bar extends FlxSpriteGroup
 			rightBar.color = right;
 	}
 
+<<<<<<< HEAD
 	// Compatibility aliases for foreign scripts that use older/Codename-style bar APIs.
 	public inline function createFilledBar(left:FlxColor, right:FlxColor)
 		setColors(left, right);
@@ -91,6 +92,8 @@ class Bar extends FlxSpriteGroup
 	public inline function getFillBar():FlxSprite
 		return leftBar;
 
+=======
+>>>>>>> mobile/main
 	public function updateBar()
 	{
 		if(leftBar == null || rightBar == null) return;

@@ -121,12 +121,27 @@ class AchievementsMenuState extends MusicBeatState
 		add(nameText);
 		
 		_changeSelection();
+<<<<<<< HEAD
+=======
+
+		addTouchPad('LEFT_FULL', 'B_C');
+
+>>>>>>> mobile/main
 		super.create();
 		
 		FlxG.camera.follow(camFollow, null, 0.15);
 		FlxG.camera.scroll.y = -FlxG.height;
 	}
 
+<<<<<<< HEAD
+=======
+	override function closeSubState() {
+		super.closeSubState();
+                removeTouchPad();
+		addTouchPad('LEFT_FULL', 'B_C');
+	}
+
+>>>>>>> mobile/main
 	function makeAchievement(achievement:String, data:Achievement, unlocked:Bool, mod:String = null)
 	{
 		return {
@@ -197,8 +212,14 @@ class AchievementsMenuState extends MusicBeatState
 				}
 			}
 			
+<<<<<<< HEAD
 			if(controls.RESET && (options[curSelected].unlocked || options[curSelected].curProgress > 0))
 			{
+=======
+			if(MusicBeatState.getState().touchPad.buttonC.justPressed || controls.RESET && (options[curSelected].unlocked || options[curSelected].curProgress > 0))
+			{
+				removeTouchPad();
+>>>>>>> mobile/main
 				openSubState(new ResetAchievementSubstate());
 			}
 		}
@@ -258,6 +279,11 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 
 	public function new()
 	{
+<<<<<<< HEAD
+=======
+		controls.isInSubstate = true;
+
+>>>>>>> mobile/main
 		super();
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -290,6 +316,11 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 		noText.scrollFactor.set();
 		add(noText);
 		updateOptions();
+<<<<<<< HEAD
+=======
+
+		addTouchPad('LEFT_RIGHT', 'A');
+>>>>>>> mobile/main
 	}
 
 	override function update(elapsed:Float)
@@ -297,6 +328,10 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 		if(controls.BACK)
 		{
 			close();
+<<<<<<< HEAD
+=======
+			controls.isInSubstate = false;
+>>>>>>> mobile/main
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			return;
 		}
@@ -337,6 +372,10 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 			}
+<<<<<<< HEAD
+=======
+			controls.isInSubstate = false;
+>>>>>>> mobile/main
 			close();
 			return;
 		}
@@ -354,4 +393,8 @@ class ResetAchievementSubstate extends MusicBeatSubstate
 		FlxG.sound.play(Paths.sound('scrollMenu'));
 	}
 }
+<<<<<<< HEAD
 #end
+=======
+#end
+>>>>>>> mobile/main

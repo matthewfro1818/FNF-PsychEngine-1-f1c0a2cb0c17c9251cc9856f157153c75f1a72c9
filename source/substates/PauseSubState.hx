@@ -15,7 +15,11 @@ class PauseSubState extends MusicBeatSubstate
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = [];
+<<<<<<< HEAD
 	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Options', 'Exit to menu'];
+=======
+	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Chart Editor', 'Change Difficulty', 'Options', 'Exit to menu'];
+>>>>>>> mobile/main
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
 
@@ -141,6 +145,12 @@ class PauseSubState extends MusicBeatSubstate
 		regenMenu();
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
+<<<<<<< HEAD
+=======
+		addTouchPad(menuItems.contains('Skip Time') ? 'LEFT_FULL' : 'UP_DOWN', 'A');
+		addTouchPadCamera();
+
+>>>>>>> mobile/main
 		super.create();
 	}
 	
@@ -263,6 +273,10 @@ class PauseSubState extends MusicBeatSubstate
 			switch (daSelected)
 			{
 				case "Resume":
+<<<<<<< HEAD
+=======
+					Paths.clearUnusedMemory();
+>>>>>>> mobile/main
 					close();
 				case 'Change Difficulty':
 					menuItems = difficultyChoices;
@@ -274,6 +288,11 @@ class PauseSubState extends MusicBeatSubstate
 					practiceText.visible = PlayState.instance.practiceMode;
 				case "Restart Song":
 					restartSong();
+<<<<<<< HEAD
+=======
+				case 'Chart Editor':
+					PlayState.instance.openChartEditor();
+>>>>>>> mobile/main
 				case "Leave Charting Mode":
 					restartSong();
 					PlayState.chartingMode = false;
@@ -333,6 +352,15 @@ class PauseSubState extends MusicBeatSubstate
 					FlxG.camera.followLerp = 0;
 			}
 		}
+<<<<<<< HEAD
+=======
+
+		if (touchPad == null) //sometimes it dosent add the tpad, hopefully this fixes it
+		{
+			addTouchPad(PlayState.chartingMode ? 'LEFT_FULL' : 'UP_DOWN', 'A');
+			addTouchPadCamera();
+		}
+>>>>>>> mobile/main
 	}
 
 	function deleteSkipTimeText()

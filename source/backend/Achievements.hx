@@ -249,6 +249,7 @@ class Achievements {
 							lime.app.Application.current.window.alert(errorMsg, errorTitle);
 							#end
 							trace('$errorTitle - $errorMsg');
+							CoolUtil.showPopUp(errorMsg, errorTitle);
 							continue;
 						}
 
@@ -259,11 +260,9 @@ class Achievements {
 							var errorMsg = 'Missing valid "save" value.';
 							#if windows
 							lime.app.Application.current.window.alert(errorMsg, errorTitle);
-							#end
 							trace('$errorTitle - $errorMsg');
-							continue;
+							CoolUtil.showPopUp(errorMsg, errorTitle);
 						}
-						key = key.trim();
 						if(achievements.exists(key)) continue;
 
 						createAchievement(key, achieve, Mods.currentModDirectory);
@@ -276,6 +275,7 @@ class Achievements {
 				lime.app.Application.current.window.alert(errorMsg, errorTitle);
 				#end
 				trace('$errorTitle - $errorMsg');
+				CoolUtil.showPopUp(errorMsg, errorTitle);
 			}
 		}
 		return retVal;

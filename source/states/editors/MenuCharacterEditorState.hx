@@ -64,6 +64,11 @@ class MenuCharacterEditorState extends MusicBeatState implements PsychUIEventHan
 		FlxG.mouse.visible = true;
 		updateCharacters();
 
+<<<<<<< HEAD
+=======
+		addTouchPad('MENU_CHARACTER', 'MENU_CHARACTER');
+
+>>>>>>> mobile/main
 		super.create();
 	}
 
@@ -81,18 +86,32 @@ class MenuCharacterEditorState extends MusicBeatState implements PsychUIEventHan
 		addCharacterUI();
 		add(UI_mainbox);
 
+<<<<<<< HEAD
+=======
+		#if !mobile
+>>>>>>> mobile/main
 		var loadButton:PsychUIButton = new PsychUIButton(0, 480, "Load Character", function() {
 			loadCharacter();
 		});
 		loadButton.screenCenter(X);
 		loadButton.x -= 60;
 		add(loadButton);
+<<<<<<< HEAD
+=======
+		#end
+>>>>>>> mobile/main
 	
 		var saveButton:PsychUIButton = new PsychUIButton(0, 480, "Save Character", function() {
 			saveCharacter();
 		});
 		saveButton.screenCenter(X);
+<<<<<<< HEAD
 		saveButton.x += 60;
+=======
+		#if !mobile
+		saveButton.x += 60;
+		#end
+>>>>>>> mobile/main
 		add(saveButton);
 	}
 
@@ -212,7 +231,11 @@ class MenuCharacterEditorState extends MusicBeatState implements PsychUIEventHan
 		if(PsychUIInputText.focusOn == null)
 		{
 			ClientPrefs.toggleVolumeKeys(true);
+<<<<<<< HEAD
 			if(FlxG.keys.justPressed.ESCAPE) {
+=======
+			if(FlxG.keys.justPressed.ESCAPE || touchPad.buttonB.justPressed) {
+>>>>>>> mobile/main
 				if(!unsavedProgress)
 				{
 					MusicBeatState.switchState(new states.editors.MasterEditorMenu());
@@ -222,6 +245,7 @@ class MenuCharacterEditorState extends MusicBeatState implements PsychUIEventHan
 			}
 
 			var shiftMult:Int = 1;
+<<<<<<< HEAD
 			if(FlxG.keys.pressed.SHIFT) shiftMult = 10;
 
 			if(FlxG.keys.justPressed.LEFT) {
@@ -237,11 +261,32 @@ class MenuCharacterEditorState extends MusicBeatState implements PsychUIEventHan
 				updateOffset();
 			}
 			if(FlxG.keys.justPressed.DOWN) {
+=======
+			if(FlxG.keys.pressed.SHIFT || touchPad.buttonA.pressed) shiftMult = 10;
+
+			if(FlxG.keys.justPressed.LEFT || touchPad.buttonLeft.justPressed) {
+				characterFile.position[0] += shiftMult;
+				updateOffset();
+			}
+			if(FlxG.keys.justPressed.RIGHT || touchPad.buttonRight.justPressed) {
+				characterFile.position[0] -= shiftMult;
+				updateOffset();
+			}
+			if(FlxG.keys.justPressed.UP || touchPad.buttonUp.justPressed) {
+				characterFile.position[1] += shiftMult;
+				updateOffset();
+			}
+			if(FlxG.keys.justPressed.DOWN || touchPad.buttonDown.justPressed) {
+>>>>>>> mobile/main
 				characterFile.position[1] -= shiftMult;
 				updateOffset();
 			}
 
+<<<<<<< HEAD
 			if(FlxG.keys.justPressed.SPACE && characterTypeRadio.checked == 1) {
+=======
+			if((FlxG.keys.justPressed.SPACE || touchPad.buttonC.justPressed) && characterTypeRadio.checked == 1) {
+>>>>>>> mobile/main
 				grpWeekCharacters.members[characterTypeRadio.checked].animation.play('confirm', true);
 			}
 		}
@@ -339,11 +384,22 @@ class MenuCharacterEditorState extends MusicBeatState implements PsychUIEventHan
 			var splittedImage:Array<String> = imageInputText.text.trim().split('_');
 			var characterName:String = splittedImage[splittedImage.length-1].toLowerCase().replace(' ', '');
 
+<<<<<<< HEAD
+=======
+			#if mobile
+			unsavedProgress = false;
+			StorageUtil.saveContent('$characterName.json', data);
+			#else
+>>>>>>> mobile/main
 			_file = new FileReference();
 			_file.addEventListener(#if desktop Event.SELECT #else Event.COMPLETE #end, onSaveComplete);
 			_file.addEventListener(Event.CANCEL, onSaveCancel);
 			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 			_file.save(data, characterName + ".json");
+<<<<<<< HEAD
+=======
+			#end
+>>>>>>> mobile/main
 		}
 	}
 

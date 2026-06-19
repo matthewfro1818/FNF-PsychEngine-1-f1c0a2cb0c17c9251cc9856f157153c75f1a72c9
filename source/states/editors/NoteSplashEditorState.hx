@@ -71,9 +71,17 @@ class NoteSplashEditorState extends MusicBeatState
         shaderUI.y = UI.y + UI.height + 10;
         add(shaderUI);
 
+<<<<<<< HEAD
         var tipText:FlxText = new FlxText();
         tipText.setFormat(null, 24);
         tipText.text = "Press F1 for Help";
+=======
+        final buttonF1:String = (controls.mobileC) ? "F" : "F1";
+
+        var tipText:FlxText = new FlxText();
+        tipText.setFormat(null, 24);
+        tipText.text = 'Press $buttonF1 for Help';
+>>>>>>> mobile/main
         tipText.setPosition(properUI.x - properUI.width + 15, UI.y);
         add(tipText);
 
@@ -117,6 +125,11 @@ class NoteSplashEditorState extends MusicBeatState
         curText.x += 5;
         add(curText);
 
+<<<<<<< HEAD
+=======
+		addTouchPad('LEFT_FULL', 'NOTE_SPLASH_EDITOR');
+
+>>>>>>> mobile/main
         super.create();
     }
 
@@ -348,8 +361,15 @@ class NoteSplashEditorState extends MusicBeatState
         templateButton = new PsychUIButton(20, 155, "Template");
         ui.add(templateButton);
 
+<<<<<<< HEAD
         var loadButton:PsychUIButton = new PsychUIButton(180, 155, "Convert TXT", loadTxt);
         ui.add(loadButton);
+=======
+        #if !mobile
+        var loadButton:PsychUIButton = new PsychUIButton(180, 155, "Convert TXT", loadTxt);
+        ui.add(loadButton);
+        #end
+>>>>>>> mobile/main
 
         var allowRGBCheck:PsychUICheckBox = new PsychUICheckBox(20, 105, "", 1);
         function check()
@@ -535,6 +555,7 @@ class NoteSplashEditorState extends MusicBeatState
             }
 
             var changedOffset = false;
+<<<<<<< HEAD
             if (FlxG.keys.pressed.CONTROL && config.animations.get(curAnim) != null)
             {
                 if (FlxG.keys.justPressed.C)
@@ -542,6 +563,15 @@ class NoteSplashEditorState extends MusicBeatState
                     copiedOffset = config.animations.get(curAnim).offsets.copy();
                 }
                 else if (FlxG.keys.justPressed.V)
+=======
+            if (controls.mobileC || FlxG.keys.pressed.CONTROL && config.animations.get(curAnim) != null)
+            {
+                if (touchPad.buttonC.justPressed || FlxG.keys.justPressed.C)
+                {
+                    copiedOffset = config.animations.get(curAnim).offsets.copy();
+                }
+                else if (touchPad.buttonV.justPressed || FlxG.keys.justPressed.V)
+>>>>>>> mobile/main
                 {
                     var conf = config.animations.get(curAnim);
                     conf.offsets = copiedOffset.copy(); 
@@ -557,9 +587,15 @@ class NoteSplashEditorState extends MusicBeatState
                 }
             }
 
+<<<<<<< HEAD
             var multiplier:Int = (FlxG.keys.pressed.SHIFT || FlxG.gamepads.anyPressed(LEFT_SHOULDER)) ? 10 : 1;
 
             var moveKeysP = [FlxG.keys.justPressed.LEFT, FlxG.keys.justPressed.RIGHT, FlxG.keys.justPressed.UP, FlxG.keys.justPressed.DOWN];
+=======
+            var multiplier:Int = (touchPad.buttonZ.pressed || FlxG.keys.pressed.SHIFT || FlxG.gamepads.anyPressed(LEFT_SHOULDER)) ? 10 : 1;
+
+            var moveKeysP = [touchPad.buttonLeft.justPressed || FlxG.keys.justPressed.LEFT,touchPad.buttonRight.justPressed || FlxG.keys.justPressed.RIGHT, touchPad.buttonUp.justPressed || FlxG.keys.justPressed.UP, touchPad.buttonDown.justPressed || FlxG.keys.justPressed.DOWN];
+>>>>>>> mobile/main
             if(moveKeysP.contains(true))
             {
                 config.animations[curAnim].offsets[0] += ((moveKeysP[0] ? 1 : 0) - (moveKeysP[1] ? 1 : 0)) * multiplier;
@@ -567,7 +603,11 @@ class NoteSplashEditorState extends MusicBeatState
                 changedOffset = true;
             }
     
+<<<<<<< HEAD
             var moveKeys = [FlxG.keys.pressed.LEFT, FlxG.keys.pressed.RIGHT, FlxG.keys.pressed.UP, FlxG.keys.pressed.DOWN];
+=======
+            var moveKeys = [touchPad.buttonLeft.pressed || FlxG.keys.pressed.LEFT, touchPad.buttonRight.pressed || FlxG.keys.pressed.RIGHT, touchPad.buttonUp.pressed || FlxG.keys.pressed.UP, touchPad.buttonDown.pressed || FlxG.keys.pressed.DOWN];
+>>>>>>> mobile/main
             if(moveKeys.contains(true))
             {
                 holdingArrowsTime += elapsed;
@@ -592,8 +632,16 @@ class NoteSplashEditorState extends MusicBeatState
         {
             if (controls.BACK)
                 MusicBeatState.switchState(new MasterEditorMenu());
+<<<<<<< HEAD
             if (FlxG.keys.justPressed.F1)
                 openSubState(new NoteSplashEditorHelpSubState());
+=======
+            if (touchPad.buttonF.justPressed || FlxG.keys.justPressed.F1)
+            {
+                removeTouchPad();
+                openSubState(new NoteSplashEditorHelpSubState());
+            }
+>>>>>>> mobile/main
         }
 
         if (FlxG.mouse.overlaps(strums))
@@ -630,6 +678,16 @@ class NoteSplashEditorState extends MusicBeatState
         }
     }
 
+<<<<<<< HEAD
+=======
+    override function closeSubState()
+	{
+		super.closeSubState();
+        removeTouchPad();
+		addTouchPad('LEFT_FULL', 'NOTE_SPLASH_EDITOR');
+	}
+
+>>>>>>> mobile/main
     function playStrumAnim(?name:String, noteData:Int)
     {
         var splash:NoteSplash = new NoteSplash(0, 0, imageSkin);
@@ -774,11 +832,21 @@ class NoteSplashEditorState extends MusicBeatState
         var data:String = Json.stringify(config, "\t");
         if (data.length > 0)
         {
+<<<<<<< HEAD
+=======
+            #if mobile
+            StorageUtil.saveContent('${imageSkin.split("/").pop()}.json', data);
+            #else
+>>>>>>> mobile/main
             _file = new FileReference();
             _file.addEventListener(Event.COMPLETE, onSaveComplete);
             _file.addEventListener(Event.CANCEL, onSaveCancel);
             _file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
             _file.save(data, imageSkin + ".json");
+<<<<<<< HEAD
+=======
+            #end
+>>>>>>> mobile/main
         }
     }
 
@@ -935,6 +1003,7 @@ class NoteSplashEditorHelpSubState extends MusicBeatSubstate
         bg.alpha = 0.6;
         add(bg);
 
+<<<<<<< HEAD
         var str:Array<String> = ["Click on a Strum or Press Space",
         "to spawn a Splash",
         "",
@@ -947,6 +1016,35 @@ class NoteSplashEditorHelpSubState extends MusicBeatSubstate
         "",
         "On every 4 subsequent note datas",
         "an extra set of animations will be added"];
+=======
+		var str:Array<String> = (controls.mobileC) ? 
+        [
+            "Touch on a Strum",
+            "to spawn a Splash",
+            "",
+            "Arrow Keys - Move Offset",
+			"Hold Z - Move Offsets 10x faster",
+            "",
+            "",
+            "C - Copy Current Offset",
+            "V - Paste Copied Offset on Current Splash",
+            "On every 4 subsequent note datas",
+            "an extra set of animations will be added"
+        ] : [
+			"Click on a Strum or Press Space",
+			"to spawn a Splash",
+			"",
+			"Arrow Keys - Move Offset",
+			"Hold Shift - Move Offsets 10x faster",
+			"",
+			"",
+			"Ctrl + C - Copy Current Offset",
+			"Ctrl + V - Paste Copied Offset on Current Splash",
+			"Ctrl + R - Reset Current Offset",
+            "On every 4 subsequent note datas",
+            "an extra set of animations will be added"
+		];
+>>>>>>> mobile/main
 
         var helpTexts:FlxSpriteGroup = new FlxSpriteGroup();
         for (i => txt in str)
@@ -972,6 +1070,12 @@ class NoteSplashEditorHelpSubState extends MusicBeatSubstate
         noteDataText.y = FlxG.height - noteDataText.height - 5;
 
         add(noteDataText);
+<<<<<<< HEAD
+=======
+
+		addTouchPad('NONE', 'B');
+        touchPad.y -= 205;
+>>>>>>> mobile/main
     }
 
     override function update(elapsed:Float)
@@ -979,6 +1083,15 @@ class NoteSplashEditorHelpSubState extends MusicBeatSubstate
         super.update(elapsed);
 
         if (controls.BACK || FlxG.keys.justPressed.F1)
+<<<<<<< HEAD
             close();
     }
 }
+=======
+        {
+            removeTouchPad();
+            close();
+        }
+    }
+}
+>>>>>>> mobile/main

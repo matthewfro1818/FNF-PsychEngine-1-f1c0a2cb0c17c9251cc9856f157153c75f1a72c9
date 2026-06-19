@@ -269,4 +269,8 @@ class Limo extends BaseStage
 			}
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> mobile/main

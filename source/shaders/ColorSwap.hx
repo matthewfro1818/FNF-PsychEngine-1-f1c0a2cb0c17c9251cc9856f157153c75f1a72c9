@@ -1,7 +1,10 @@
 package shaders;
 
+<<<<<<< HEAD
 import flixel.system.FlxAssets.FlxShader;
 
+=======
+>>>>>>> mobile/main
 class ColorSwap {
 	public var shader(default, null):ColorSwapShader = new ColorSwapShader();
 	public var hue(default, set):Float = 0;
